@@ -32,7 +32,7 @@ namespace TestSystem.Db
             
             builder.Entity<Faculty>().HasData(
                 new Faculty{FacultyId = 1, FacultyName = "ПМиИ"},
-                new Faculty{FacultyId = 2, FacultyName = "ГМУ"});
+                new Faculty{FacultyId = 2, FacultyName = "ГМУ"});   
         }
     }
 }

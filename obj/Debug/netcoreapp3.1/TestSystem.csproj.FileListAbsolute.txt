@@ -113,7 +113,6 @@ C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\TestSystem.TagHelpers.input.
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\TestSystem.TagHelpers.output.cache
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\TestSystem.RazorCoreGenerate.cache
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -126,3 +125,9 @@ C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\TestSystem.csproj.CopyComple
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\staticwebassets\TestSystem.StaticWebAssets.Manifest.cache
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\staticwebassets\TestSystem.StaticWebAssets.xml
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\TestSystem.genruntimeconfig.cache
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\Index.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\HomeEntry.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\HomeRegistration.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\StudentRegistration.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\TeacherRegistration.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\Result.cshtml.g.cs

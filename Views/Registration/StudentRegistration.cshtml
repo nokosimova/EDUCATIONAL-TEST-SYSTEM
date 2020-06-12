@@ -1,0 +1,95 @@
+@model TestSystem.Models.CourseFacultySubject;
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<style>
+    div { line-height: 2;}
+    input:invalid {
+  border: 2px dashed red;
+}
+input:valid {
+  border: 2px solid black;
+}
+</style>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#F5DEB3;">
+                <h1 style="color: black;">Регистрация</h1>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#F4A460;width:180px;text-align:top;">
+                <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                
+            </td>
+            <td style="background-color:#FFE4C4;height:800px;text-align:top;"> 
+               <h3>СТУДЕНТ</h3>
+               <h3>        </h3>
+               <div>
+                    <h3>Введите свои данные: </h3>
+                    <form method="POST">
+                        <table>
+                            <tr>
+                                <td>Фамилия:</td>
+                                <td><input type="text" name="StudentFirstName" required pattern="[А-Я][а-я]+" value = "@Model.student.StudentFirstName" /> вводите начиная с заглавной буквы</td>
+                            </tr>
+                            <tr>
+                                <td>Имя:</td>
+                                <td><input type="text" name="StudentSecondName" required pattern="[А-Я][а-я]+" value = "@Model.student.StudentSecondName" /> вводите начиная с заглавной буквы</td>
+                            </tr>
+                            <tr>
+                                <td>Отчество:</td>
+                                <td><input type="text" name="StudentMiddleName"  required pattern="[А-Я][а-я]+" value = "@Model.student.StudentMiddleName"  /> вводите начиная с заглавной буквы</td>
+                            </tr>   
+                            <tr>  
+                                <td> Курс :</td>
+                                <td>
+                                    <select name="IdCourse">
+                                        @foreach (var item in Model.Courses)
+                                        {
+                                            <option value="@item.CourseId"> @item.CourseName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Факультет :</td>
+                                <td>
+                                    <select name="IdFaculty">
+                                        @foreach (var item in Model.Faculties)
+                                        {
+                                            <option value="@item.FacultyId"> @item.FacultyName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>                                                                        
+                            <tr>
+                                <td>Логин(латинские буквы):</td>
+                                <td><input type="text" name="StudentLogin" required pattern="[a-z0-9-_]+"/> латинские буквы, не использовать "." "," " " </td>
+                            </tr>                           
+                            <tr>
+                                <td>Пароль:</td>
+                                <td><input type="text" name="StudentPassword" required pattern="[a-z0-9]+"/> только латинские буквы: a-z </td>
+                            </tr>                           
+                            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 

@@ -16,7 +16,11 @@ namespace TestSystem.Models
         
         [Required(ErrorMessage = "Пожалуйста введите отчество")]
         public int TeacherMiddleName{get; set;}
+        
+        [Required(ErrorMessage = "Пожалуйста ввелите логин")]
+        public int TeacherLogin{get; set;}
+        [Required(ErrorMessage = "Пожалуйста введите пароль")]
+        public int TeacherPassword{get; set;}
         public virtual ICollection<Test> Tests{get; set;}
     }
-
 }

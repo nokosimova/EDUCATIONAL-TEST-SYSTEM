@@ -20521,13 +20521,28 @@
   "RootNamespace": "TestSystem",
   "Documents": [
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeRegistration.cshtml",
+      "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\Index.cshtml",
+      "TargetPath": "Views\\Registration\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\TeacherRegistration.cshtml",
+      "TargetPath": "Views\\Registration\\TeacherRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeEntry.cshtml",
+      "TargetPath": "Views\\Home\\HomeEntry.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20543,6 +20558,16 @@
     {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\StudentRegistration.cshtml",
+      "TargetPath": "Views\\Registration\\StudentRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\Result.cshtml",
+      "TargetPath": "Views\\Registration\\Result.cshtml",
       "FileKind": "mvc"
     },
     {

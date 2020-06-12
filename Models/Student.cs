@@ -12,9 +12,13 @@ namespace TestSystem.Models
         public string StudentSecondName{get; set;}
         [Required(ErrorMessage = "Пожалуйста введите отчество!")]
         public string StudentMiddleName{get; set;}
+        [Required(ErrorMessage = "Пожалуйста ввелите логин")]
+        public int StudentLogin{get; set;}
+        [Required(ErrorMessage = "Пожалуйста введите пароль")]
+        public int StudentPassword{get; set;}
         public int IdCourse{get; set;}
         public int IdFaculty{get; set;}
-
+        
         public virtual Course Course{get; set;}
         public virtual Faculty Faculty{get; set;}
         public virtual ICollection<AnsQuestion> AnsQuestions{get; set;}

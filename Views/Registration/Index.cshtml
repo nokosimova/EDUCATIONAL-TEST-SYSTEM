@@ -1,0 +1,45 @@
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 800px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#F5DEB3;">
+                <h1 style="color: black;">Регистрация</h1>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#F4A460;width:150px;text-align:top;">
+                <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                </h3>
+                <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Вход</a>
+                </h3>
+                 <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Регистрация</a>
+                </h3>
+            </td>
+            <td style="background-color:#FFE4C4;height:200px;width:400px;text-align:top;"> 
+                <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Регистрация студента</a>
+                </h3>
+                 <h3 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Регистрация преподавателя</a>
+                </h3>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 
