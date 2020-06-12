@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TestSystem.Models;
 
-namespace OnlineShop.Db
+namespace TestSystem.Db
 {
     public class DataContext:DbContext
     {
@@ -22,5 +22,17 @@ namespace OnlineShop.Db
         public DbSet<Question> Questions{get; set;}
         public DbSet<Answer> Answers{get; set;}
         public DbSet<AnsQuestion> AnsQuestions{get; set;}
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Course>().HasData(
+                new Course{CourseId = 1, CourseName = "1"},
+                new Course{CourseId = 2, CourseName = "2"},
+                new Course{CourseId = 3, CourseName = "3"},
+                new Course{CourseId = 4, CourseName = "4"});
+            
+            builder.Entity<Faculty>().HasData(
+                new Faculty{FacultyId = 1, FacultyName = "ПМиИ"},
+                new Faculty{FacultyId = 2, FacultyName = "ГМУ"});
+        }
     }
 }
