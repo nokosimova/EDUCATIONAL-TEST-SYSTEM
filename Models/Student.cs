@@ -13,9 +13,9 @@ namespace TestSystem.Models
         [Required(ErrorMessage = "Пожалуйста введите отчество!")]
         public string StudentMiddleName{get; set;}
         [Required(ErrorMessage = "Пожалуйста ввелите логин")]
-        public int StudentLogin{get; set;}
+        public string StudentLogin{get; set;}
         [Required(ErrorMessage = "Пожалуйста введите пароль")]
-        public int StudentPassword{get; set;}
+        public string StudentPassword{get; set;}
         public int IdCourse{get; set;}
         public int IdFaculty{get; set;}
         

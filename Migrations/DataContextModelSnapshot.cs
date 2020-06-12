@@ -188,15 +188,17 @@ namespace TestSystem.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("StudentLogin")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("StudentLogin")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("StudentMiddleName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("StudentPassword")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("StudentPassword")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("StudentSecondName")
                         .IsRequired()
@@ -248,20 +250,25 @@ namespace TestSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("TeacherFirstName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TeacherFirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("TeacherLogin")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TeacherLogin")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("TeacherMiddleName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TeacherMiddleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("TeacherPassword")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TeacherPassword")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("TeacherSecondName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TeacherSecondName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("TeacherId");
 

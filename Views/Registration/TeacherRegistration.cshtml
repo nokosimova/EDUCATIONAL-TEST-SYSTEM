@@ -1,3 +1,4 @@
+@model TestSystem.Models.Teacher
 @{
     Layout = null;
 }
@@ -11,8 +12,14 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <style>
-    div {line-height: 2; }
-</style> 
+    div { line-height: 2;}
+    input:invalid {
+  border: 2px solid red;
+}
+input:valid {
+  border: 2px solid black;
+}
+</style>
 <body>
 
     <table style="width: 1150px; border:0px;">
@@ -32,33 +39,31 @@
                <h3>        </h3>
                <div>
                     <h3>Введите свои данные: </h3>
-                    <form >
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <form method="POST">
                         <table>
                             <tr>
                                 <td>Фамилия:</td>
-                                <td><input type="text" name="" /> </td>
+                                <td><input type="text" name="TeacherFirstName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherFirstName" /> вводите начиная с заглавной буквы</td>
                             </tr>
                             <tr>
                                 <td>Имя:</td>
-                                <td><input type="text" name="" /> </td>
+                                <td><input type="text" name="TeacherSecondName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherSecondName" /> вводите начиная с заглавной буквы</td>
                             </tr>
                             <tr>
                                 <td>Отчество:</td>
-                                <td><input type="text" name="" /> </td>
-                            </tr>                                                                             
+                                <td><input type="text" name="TeacherMiddleName"  required pattern="[А-Я][а-я]+" value = "@Model.TeacherMiddleName"  /> вводите начиная с заглавной буквы</td>
+                            </tr>                                                                              
                             <tr>
                                 <td>Логин(латинские буквы):</td>
-                                <td><input type="text" name="" /> </td>
+                                <td><input type="text" name="TeacherLogin" required pattern="[a-z0-9-_]+"/> латинские буквы, не использовать "." "," " " </td>
+                               
                             </tr>                           
                             <tr>
                                 <td>Пароль:</td>
-                                <td><input type="text" name="" /> </td>
+                                <td><input type="text" name="TeacherPassword" required pattern="[a-z0-9]+"/> только латинские буквы: a-z </td>
                             </tr>                           
-                            <tr>
-                                <td>Повторите пароль:</td>
-                                <td><input type="text" name="" /> </td>
-                            </tr>                           
-                            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+                            <tr><td><input type="submit" value="Зарегистрироваться" /> </td><td></td></tr>
                         </table>
                     </form>
                 </div>

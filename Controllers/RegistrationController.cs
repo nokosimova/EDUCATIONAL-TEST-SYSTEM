@@ -22,13 +22,14 @@ namespace Project.Controllers
         {            
             return View();
         }
+        
         [HttpGet]
         public IActionResult StudentRegistration()
         {
             Student free = new Student{
-                StudentFirstName = "???",
-                StudentSecondName = "???",
-                StudentMiddleName = "???"
+                StudentFirstName = "   ",
+                StudentSecondName = "   ",
+                StudentMiddleName = "   "
             };
             CourseFacultySubject model = new
             CourseFacultySubject{
@@ -40,20 +41,23 @@ namespace Project.Controllers
         }
         public IActionResult TeacherRegistration()
         {
-            return View();
+            Teacher free = new Teacher{
+                TeacherFirstName = "   ",
+                TeacherSecondName = "   ",
+                TeacherMiddleName = "   "
+            };
+            return View(free);
         }
+        
         [HttpPost]
         public IActionResult StudentRegistration(Student newstudent)
-        {    
-            data.Students.Add(newstudent);
-                data.SaveChanges();       
-                return View("Result");       
-           /* if (data.Students.FirstOrDefault(i => i.StudentLogin == newstudent.StudentLogin) == null)     
+        {  
+            if (data.Students.FirstOrDefault(i => i.StudentLogin == newstudent.StudentLogin) == null)     
             {
                 data.Students.Add(newstudent);
                 data.SaveChanges();       
                 return View("Result");
-            }
+            } else {
             ModelState.AddModelError("StudentLogin", "Студент с таким логином уже зарегистрирован");
             CourseFacultySubject model = new
             CourseFacultySubject{
@@ -61,7 +65,20 @@ namespace Project.Controllers
                 Faculties = data.Faculties,
                 student = newstudent
             };
-            return View(model);*/
+            return View(model); }
+        }
+        [HttpPost]
+        public IActionResult TeacherRegistration(Teacher newteacher)
+        {
+            if (data.Teachers.FirstOrDefault(i => i.TeacherLogin == newteacher.TeacherLogin) == null)
+            {
+                data.Teachers.Add(newteacher);
+                data.SaveChanges();
+                return View("Result");
+            } else {
+                ModelState.AddModelError("TeacherLogin", "Преподаватель с таким логином уже зарегистрирован");               
+                return View(newteacher);
+            }
         }
         public IActionResult Result()
         {

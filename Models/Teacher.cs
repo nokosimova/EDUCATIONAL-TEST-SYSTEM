@@ -9,18 +9,18 @@ namespace TestSystem.Models
         public int TeacherId{get; set;}
 
         [Required(ErrorMessage = "Пожалуйста введите фамилию")]
-        public int TeacherFirstName{get; set;}
+        public string TeacherFirstName{get; set;}
 
         [Required(ErrorMessage = "Пожалуйста введите имя")]
-        public int TeacherSecondName{get; set;}
+        public string TeacherSecondName{get; set;}
         
         [Required(ErrorMessage = "Пожалуйста введите отчество")]
-        public int TeacherMiddleName{get; set;}
+        public string TeacherMiddleName{get; set;}
         
         [Required(ErrorMessage = "Пожалуйста ввелите логин")]
-        public int TeacherLogin{get; set;}
+        public string TeacherLogin{get; set;}
         [Required(ErrorMessage = "Пожалуйста введите пароль")]
-        public int TeacherPassword{get; set;}
+        public string TeacherPassword{get; set;}
         public virtual ICollection<Test> Tests{get; set;}
     }
 }

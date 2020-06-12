@@ -14,7 +14,7 @@
 <style>
     div { line-height: 2;}
     input:invalid {
-  border: 2px dashed red;
+  border: 2px solid red;
 }
 input:valid {
   border: 2px solid black;
@@ -38,7 +38,9 @@ input:valid {
                <h3>СТУДЕНТ</h3>
                <h3>        </h3>
                <div>
+                   
                     <h3>Введите свои данные: </h3>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                     <form method="POST">
                         <table>
                             <tr>
@@ -78,12 +80,13 @@ input:valid {
                             <tr>
                                 <td>Логин(латинские буквы):</td>
                                 <td><input type="text" name="StudentLogin" required pattern="[a-z0-9-_]+"/> латинские буквы, не использовать "." "," " " </td>
+                               
                             </tr>                           
                             <tr>
                                 <td>Пароль:</td>
                                 <td><input type="text" name="StudentPassword" required pattern="[a-z0-9]+"/> только латинские буквы: a-z </td>
                             </tr>                           
-                            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+                            <tr><td><input type="submit" value="Зарегистрироваться" /> </td><td></td></tr>
                         </table>
                     </form>
                 </div>

@@ -38,9 +38,11 @@ namespace TestSystem.Migrations
                 {
                     TeacherId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TeacherFirstName = table.Column<int>(nullable: false),
-                    TeacherSecondName = table.Column<int>(nullable: false),
-                    TeacherMiddleName = table.Column<int>(nullable: false)
+                    TeacherFirstName = table.Column<string>(nullable: false),
+                    TeacherSecondName = table.Column<string>(nullable: false),
+                    TeacherMiddleName = table.Column<string>(nullable: false),
+                    TeacherLogin = table.Column<string>(nullable: false),
+                    TeacherPassword = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,6 +58,8 @@ namespace TestSystem.Migrations
                     StudentFirstName = table.Column<string>(nullable: false),
                     StudentSecondName = table.Column<string>(nullable: false),
                     StudentMiddleName = table.Column<string>(nullable: false),
+                    StudentLogin = table.Column<string>(nullable: false),
+                    StudentPassword = table.Column<string>(nullable: false),
                     IdCourse = table.Column<int>(nullable: false),
                     IdFaculty = table.Column<int>(nullable: false),
                     CourseId = table.Column<int>(nullable: true),
