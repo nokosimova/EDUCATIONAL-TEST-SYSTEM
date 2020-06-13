@@ -7,6 +7,20 @@ namespace TestSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    AdminId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AdminLogin = table.Column<string>(nullable: false),
+                    AdminPassword = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.AdminId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
@@ -221,6 +235,11 @@ namespace TestSystem.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Admins",
+                columns: new[] { "AdminId", "AdminLogin", "AdminPassword" },
+                values: new object[] { 1, "admin007", "iamaboss" });
+
+            migrationBuilder.InsertData(
                 table: "Courses",
                 columns: new[] { "CourseId", "CourseName" },
                 values: new object[] { 1, "1" });
@@ -308,6 +327,9 @@ namespace TestSystem.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Admins");
+
             migrationBuilder.DropTable(
                 name: "AnsQuestions");
 

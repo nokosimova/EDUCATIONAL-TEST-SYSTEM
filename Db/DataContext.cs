@@ -13,6 +13,7 @@ namespace TestSystem.Db
         {
             Database.EnsureCreated();
         }
+        public DbSet<Admin> Admins{get;set;}
         public DbSet<Course> Courses{get; set;}
         public DbSet<Faculty> Faculties{get; set;}
         public DbSet<Teacher> Teachers{get; set;}
@@ -32,7 +33,13 @@ namespace TestSystem.Db
             
             builder.Entity<Faculty>().HasData(
                 new Faculty{FacultyId = 1, FacultyName = "ПМиИ"},
-                new Faculty{FacultyId = 2, FacultyName = "ГМУ"});   
+                new Faculty{FacultyId = 2, FacultyName = "ГМУ"});
+                
+            builder.Entity<Admin>().HasData(
+                new Admin{AdminId = 1, 
+                AdminLogin = "admin007", 
+                AdminPassword = "iamaboss"}
+            );   
         }
     }
 }

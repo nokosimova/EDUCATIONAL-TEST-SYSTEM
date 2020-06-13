@@ -48,17 +48,17 @@ namespace Project.Controllers
             };
             return View(free);
         }
-        
         [HttpPost]
         public IActionResult StudentRegistration(Student newstudent)
-        {  
-            if (data.Students.FirstOrDefault(i => i.StudentLogin == newstudent.StudentLogin) == null)     
+        {
+            if (data.Students.FirstOrDefault(i => i.StudentLogin == newstudent.StudentLogin) == null &&
+                data.Teachers.FirstOrDefault(i => i.TeacherLogin == newstudent.StudentLogin) == null)     
             {
                 data.Students.Add(newstudent);
                 data.SaveChanges();       
                 return View("Result");
             } else {
-            ModelState.AddModelError("StudentLogin", "Студент с таким логином уже зарегистрирован");
+            ModelState.AddModelError("StudentLogin", "Пользоваетель с таким логином уже зарегистрирован");
             CourseFacultySubject model = new
             CourseFacultySubject{
                 Courses = data.Courses,
@@ -70,13 +70,14 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult TeacherRegistration(Teacher newteacher)
         {
-            if (data.Teachers.FirstOrDefault(i => i.TeacherLogin == newteacher.TeacherLogin) == null)
+            if (data.Teachers.FirstOrDefault(i => i.TeacherLogin == newteacher.TeacherLogin) == null &&
+                data.Students.FirstOrDefault(i => i.StudentLogin == newteacher.TeacherLogin) == null)
             {
                 data.Teachers.Add(newteacher);
                 data.SaveChanges();
                 return View("Result");
             } else {
-                ModelState.AddModelError("TeacherLogin", "Преподаватель с таким логином уже зарегистрирован");               
+                ModelState.AddModelError("TeacherLogin", "Пользователь с таким логином уже зарегистрирован");               
                 return View(newteacher);
             }
         }

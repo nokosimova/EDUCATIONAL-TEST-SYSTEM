@@ -9,14 +9,41 @@ using TestSystem.Db;
 namespace TestSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200612191245_Initial")]
-    partial class Initial
+    [Migration("20200613122607_Initial1")]
+    partial class Initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5");
+
+            modelBuilder.Entity("TestSystem.Models.Admin", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AdminLogin")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AdminPassword")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            AdminId = 1,
+                            AdminLogin = "admin007",
+                            AdminPassword = "iamaboss"
+                        });
+                });
 
             modelBuilder.Entity("TestSystem.Models.AnsQuestion", b =>
                 {

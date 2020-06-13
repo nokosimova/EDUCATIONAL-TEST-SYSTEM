@@ -20521,6 +20521,16 @@
   "RootNamespace": "TestSystem",
   "Documents": [
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Teacher\\Index.cshtml",
+      "TargetPath": "Views\\Teacher\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeRegistration.cshtml",
       "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
       "FileKind": "mvc"
@@ -20528,6 +20538,11 @@
     {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Student\\Index.cshtml",
+      "TargetPath": "Views\\Student\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

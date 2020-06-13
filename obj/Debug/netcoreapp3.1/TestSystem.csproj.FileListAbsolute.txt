@@ -131,3 +131,6 @@ C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\HomeRegistr
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\StudentRegistration.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\TeacherRegistration.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Registration\Result.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Student\Index.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\Index.cshtml.g.cs
