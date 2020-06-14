@@ -1,0 +1,74 @@
+@model TestSystem.Models.CourseFacultySubject
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#47C607;">
+                <h3 style="color: white;">Новый тест</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#CCFF83;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Главная</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TestList">Список тестов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h4>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+                ДЛЯ КОГО СОЗДАЁТСЯ ТЕСТ?
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <form action="~/Teacher/ChooseSubj">
+                        <table>
+                            <td><input type="hidden" name="TeacherId" value="@Model.test.IdTeacher" /> </td>                             
+                            <tr>  
+                                <td> Курс :</td>
+                                <td>
+                                    <select name="CourseId">
+                                        @foreach (var item in Model.Courses)
+                                        {
+                                            <option value="@item.CourseId"> @item.CourseName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Факультет :</td>
+                                <td>
+                                    <select name="FacultyId">
+                                        @foreach (var item in Model.Faculties)
+                                        {
+                                            <option value="@item.FacultyId"> @item.FacultyName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td><input type="submit" value="Далее" /> </td><td></td></tr>
+                       </table>
+                   </form>
+                    <form action="~/Teacher/Index">
+                        <input type="hidden" name="TeacherId" value="@Model.test.IdTeacher" />                             
+                        <input type="submit" value="Отменить">
+                    </form>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 

@@ -251,3 +251,5 @@ C:\final\test\obj\Debug\netcoreapp3.1\staticwebassets\TestSystem.StaticWebAssets
 C:\final\test\obj\Debug\netcoreapp3.1\TestSystem.dll
 C:\final\test\obj\Debug\netcoreapp3.1\TestSystem.pdb
 C:\final\test\obj\Debug\netcoreapp3.1\TestSystem.genruntimeconfig.cache
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\CreateTest.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\ChooseSubj.cshtml.g.cs

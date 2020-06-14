@@ -10,9 +10,10 @@ using TestSystem.Db;
 namespace TestSystem.Controllers
 
 {
+    
     public class HomeController : Controller
-    {        
-        DataContext data { get; set; }      
+    {         
+        DataContext data { get; set; }   
 
         public HomeController(DataContext context)
         {
@@ -52,7 +53,8 @@ namespace TestSystem.Controllers
             if (data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password)) != null)
             {
                 Teacher teacher = data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password));
-                return RedirectToAction("Index","Teacher",teacher);
+
+                return RedirectToAction("Index","Teacher",new{TeacherId = teacher.TeacherId});
             }                                
             ModelState.AddModelError("login", "Неверный логин или пароль. Попробуйте снова");               
             return View();                         

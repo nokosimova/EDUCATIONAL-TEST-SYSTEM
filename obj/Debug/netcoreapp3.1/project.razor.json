@@ -20601,6 +20601,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\ChooseSubj.cshtml",
+      "TargetPath": "Views\\Teacher\\ChooseSubj.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\final\\test\\Views\\Admin\\SubjectList.cshtml",
       "TargetPath": "Views\\Admin\\SubjectList.cshtml",
       "FileKind": "mvc"
@@ -20638,6 +20643,11 @@
     {
       "FilePath": "c:\\final\\test\\Views\\Registration\\StudentRegistration.cshtml",
       "TargetPath": "Views\\Registration\\StudentRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\CreateTest.cshtml",
+      "TargetPath": "Views\\Teacher\\CreateTest.cshtml",
       "FileKind": "mvc"
     }
   ],

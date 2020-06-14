@@ -16,13 +16,20 @@
     <table style="width: 1150px;border:0px;">
         <tr>
             <td colspan="2" style="background-color:#47C607;">
-                <h3 style="color: white;">Добро пожаловать @Model.TeacherSecondName @Model.TeacherMiddleName</h3>
+                <h3 style="color: white;">Добро пожаловать @Model.TeacherId :  @Model.TeacherSecondName @Model.TeacherMiddleName</h3>
             </td>
         </tr>
         <tr style="vertical-align: top;">
             <td style="background-color:#CCFF83;width:180px;text-align:top;">
                 <h4 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="CreateTest">Добавить тест</a>
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.TeacherId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.TeacherId},
+                     htmlAttributes: null)
                 </h4>
                 <h4 class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TestList">Список тестов</a>
@@ -32,7 +39,9 @@
                 </h4>
             </td>
             <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
-                
+                *ЧТОБЫ СОЗДАТЬ НОВЫЙ ТЕСТ ПРОЙДИТЕ ПО ССЫЛКЕ "СОЗДАТЬ ТЕСТ"
+                *ЧТОБЫ РЕДАКТИРОВАТЬ УЖЕ СУЩЕСТВУЮЩИЙ ТЕСТ, ДОБАВЛЯТЬ ВОПРОСЫ,
+                  ПЕРЕЙДИТЕ В "СПИСОК ТЕСТОВ"
             </td>
         </tr>
         <tr></tr>
