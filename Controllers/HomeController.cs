@@ -44,12 +44,12 @@ namespace TestSystem.Controllers
                 Admin admin = data.Admins.FirstOrDefault(i =>  (i.AdminLogin == login));
                 return RedirectToAction("Index","Admin",admin); 
             }
-            else if (data.Students.FirstOrDefault(i => (i.StudentLogin == login && i.StudentPassword == password)) != null)
+            if (data.Students.FirstOrDefault(i => (i.StudentLogin == login && i.StudentPassword == password)) != null)
             {                    
                 Student student = data.Students.FirstOrDefault(i => (i.StudentLogin == login && i.StudentPassword == password));
                 return RedirectToAction("Index","Student", student);
             }
-            else if (data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password)) != null)
+            if (data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password)) != null)
             {
                 Teacher teacher = data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password));
                 return RedirectToAction("Index","Teacher",teacher);

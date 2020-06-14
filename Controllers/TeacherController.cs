@@ -21,6 +21,14 @@ namespace Project.Controllers
         [HttpGet]
         public IActionResult Index(Teacher teacher)
         {            
+            return View(teacher);
+        }
+        public IActionResult CreateTest(int TeacherId)
+        {
+            return View();
+        }
+        public IActionResult TestList()
+        {
             return View();
         }
     }

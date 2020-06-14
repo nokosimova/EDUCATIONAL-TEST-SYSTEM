@@ -9,8 +9,8 @@ using TestSystem.Db;
 namespace TestSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200613122607_Initial1")]
-    partial class Initial1
+    [Migration("20200614150105_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -379,11 +379,13 @@ namespace TestSystem.Migrations
                 {
                     b.HasOne("TestSystem.Models.Course", "Course")
                         .WithMany("Subjects")
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TestSystem.Models.Faculty", "Faculty")
                         .WithMany("Subjects")
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TestSystem.Models.Test", b =>

@@ -5308,11 +5308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\vsprojects\\FINAL\\Project\\TestSystem.csproj",
+      "projectUniqueName": "C:\\final\\test\\TestSystem.csproj",
       "projectName": "TestSystem",
-      "projectPath": "C:\\vsprojects\\FINAL\\Project\\TestSystem.csproj",
+      "projectPath": "C:\\final\\test\\TestSystem.csproj",
       "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\vsprojects\\FINAL\\Project\\obj\\",
+      "outputPath": "C:\\final\\test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
