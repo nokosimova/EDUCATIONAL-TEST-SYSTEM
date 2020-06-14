@@ -32,7 +32,7 @@ namespace Project.Controllers
                 StudentMiddleName = "   "
             };
             CourseFacultySubject model = new
-            CourseFacultySubject{
+            CourseFacultySubject{                
                 Courses = data.Courses,
                 Faculties = data.Faculties,
                 student = free

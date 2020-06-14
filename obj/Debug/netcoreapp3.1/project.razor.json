@@ -20531,8 +20531,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\AddSubject.cshtml",
+      "TargetPath": "Views\\Admin\\AddSubject.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeRegistration.cshtml",
       "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeSubject.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeSubject.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20593,6 +20603,11 @@
     {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeFaculty.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeFaculty.cshtml",
       "FileKind": "mvc"
     },
     {

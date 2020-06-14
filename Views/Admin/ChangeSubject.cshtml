@@ -1,4 +1,4 @@
-@model TestSystem.Models.Teacher
+@model TestSystem.Models.CourseFacultySubject
 @{
     Layout = null;
 }
@@ -16,7 +16,7 @@
     <table style="width: 1150px;border:0px;">
         <tr>
             <td colspan="2" style="background-color:#0000ff;">
-                <h4 style="color: white;">Список преподавателей</h4>
+                <h4 style="color: white;">Список предметов</h4>
             </td>
         </tr>
         <tr style="vertical-align: top;">
@@ -40,29 +40,41 @@
             <td style="background-color:#F0FFF0;height:800px;text-align:top;"> 
             <h3>        </h3>
                <div>
-                    <h3>Измените данные: </h3>
+                <h3>Измените данные: </h3>
                     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                     <form method="POST">
                         <table>
-                            <td><input type="hidden" name="TeacherId" value="@Model.TeacherId" /> </td>
-                            <td><input type="hidden" name="TeacherLogin" value="@Model.TeacherLogin" /> </td>
-                            <td><input type="hidden" name="TeacherPassword" value="@Model.TeacherPassword" /> </td>                              
+                            <td><input type="hidden" name="SubjectId" value="@Model.subject.SubjectId" /> </td>
                             <tr>
-                                <td>Фамилия:</td>
-                                <td><input type="text" name="TeacherFirstName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherFirstName" /> вводите начиная с заглавной буквы</td>
+                                <td>Новое название:</td>
+                                <td><input type="text" name="SubjectName" required value = "@Model.subject.SubjectName" /> вводите начиная с заглавной буквы</td>
+                            </tr>
+                            <tr>  
+                                <td> Курс :</td>
+                                <td>
+                                    <select name="IdCourse">
+                                        @foreach (var item in Model.Courses)
+                                        {
+                                            <option value="@item.CourseId"> @item.CourseName</option>
+                                        }
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
-                                <td>Имя:</td>
-                                <td><input type="text" name="TeacherSecondName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherSecondName" /> вводите начиная с заглавной буквы</td>
+                                <td> Факультет :</td>
+                                <td>
+                                    <select name="IdFaculty">
+                                        @foreach (var item in Model.Faculties)
+                                        {
+                                            <option value="@item.FacultyId"> @item.FacultyName</option>
+                                        }
+                                    </select>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Отчество:</td>
-                                <td><input type="text" name="TeacherMiddleName"  required pattern="[А-Я][а-я]+" value = "@Model.TeacherMiddleName"  /> вводите начиная с заглавной буквы</td>
-                            </tr>                                                                                                                  
-                            <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
-                        </table>
-                    </form>
-                    <form action="~/Admin/TeacherList">
+                            <tr><td><input type="submit" value="Изменить" /> </td><td></td></tr>
+                       </table>
+                   </form>
+                    <form action="~/Admin/SubjectList">
                         <input type="submit" value="Отменить">
                     </form>
                 </div>

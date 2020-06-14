@@ -140,3 +140,6 @@ C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\StudentLis
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\SubjectList.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ChangeTeacher.cshtml.g.cs
 C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ChangeStudent.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ChangeFaculty.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AddSubject.cshtml.g.cs
+C:\vsprojects\FINAL\Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ChangeSubject.cshtml.g.cs

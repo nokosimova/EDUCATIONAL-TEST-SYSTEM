@@ -1,4 +1,4 @@
-@model TestSystem.Models.Teacher
+@model TestSystem.Models.Faculty
 @{
     Layout = null;
 }
@@ -16,7 +16,7 @@
     <table style="width: 1150px;border:0px;">
         <tr>
             <td colspan="2" style="background-color:#0000ff;">
-                <h4 style="color: white;">Список преподавателей</h4>
+                <h4 style="color: white;">Список студентов</h4>
             </td>
         </tr>
         <tr style="vertical-align: top;">
@@ -38,34 +38,20 @@
                 </h4>
             </td>
             <td style="background-color:#F0FFF0;height:800px;text-align:top;"> 
-            <h3>        </h3>
-               <div>
-                    <h3>Измените данные: </h3>
+                   <table>
                     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                    <form method="POST">
-                        <table>
-                            <td><input type="hidden" name="TeacherId" value="@Model.TeacherId" /> </td>
-                            <td><input type="hidden" name="TeacherLogin" value="@Model.TeacherLogin" /> </td>
-                            <td><input type="hidden" name="TeacherPassword" value="@Model.TeacherPassword" /> </td>                              
+                    <form method="POST"> 
+                            <td><input type="hidden" name="FacultyId" value="@Model.FacultyId" /> </td>
                             <tr>
-                                <td>Фамилия:</td>
-                                <td><input type="text" name="TeacherFirstName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherFirstName" /> вводите начиная с заглавной буквы</td>
+                                <td>Новое название факуьтета:</td>
+                                <td><input type="text" name="FacultyName" value = "@Model.FacultyName" /></td>
                             </tr>
-                            <tr>
-                                <td>Имя:</td>
-                                <td><input type="text" name="TeacherSecondName" required pattern="[А-Я][а-я]+" value = "@Model.TeacherSecondName" /> вводите начиная с заглавной буквы</td>
-                            </tr>
-                            <tr>
-                                <td>Отчество:</td>
-                                <td><input type="text" name="TeacherMiddleName"  required pattern="[А-Я][а-я]+" value = "@Model.TeacherMiddleName"  /> вводите начиная с заглавной буквы</td>
-                            </tr>                                                                                                                  
                             <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
-                        </table>
-                    </form>
-                    <form action="~/Admin/TeacherList">
+                   </form>
+                  </table> 
+                    <form action="~/Admin/FacultyList">
                         <input type="submit" value="Отменить">
                     </form>
-                </div>
             </td>
         </tr>
         <tr></tr>

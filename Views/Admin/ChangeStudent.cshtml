@@ -62,7 +62,7 @@
                             <tr>  
                                 <td> Курс :</td>
                                 <td>
-                                    <select name="IdCourse">
+                                    <select name="IdCourse" aria-valuenow="@Model.student.IdCourse">
                                         @foreach (var item in Model.Courses)
                                         {
                                             <option value="@item.CourseId"> @item.CourseName</option>
@@ -84,6 +84,9 @@
                             <tr><td><input type="submit" value="Сохранить" /> </td><td></td></tr>
                        </table>
                    </form>
+                            <form action="~/Admin/StudentList">
+                                <input type="submit" value="Отменить">
+                            </form>
                 </div>
             </td>
         </tr>

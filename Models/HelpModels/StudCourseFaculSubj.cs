@@ -6,10 +6,11 @@ namespace TestSystem.Models
 {
     public class StudCourseFaculSubj
     {
-        public IEnumerable<Course> Courses{get; set;}
-        public IEnumerable<Faculty> Faculties{get; set;}
-        public IEnumerable<Subject> Subjects{get; set;}
-        public IEnumerable<Student> Students{get; set;}
+        public List<Course> Courses{get; set;}
+        public List<Faculty> Faculties{get; set;}
+        public List<Subject> Subjects{get; set;}
+        public List<Student> Students{get; set;}
+        public Subject subject{get; set;}
 
     }
 }

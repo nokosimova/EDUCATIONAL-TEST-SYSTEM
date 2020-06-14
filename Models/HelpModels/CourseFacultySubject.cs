@@ -10,6 +10,7 @@ namespace TestSystem.Models
         public IEnumerable<Faculty> Faculties{get; set;}
         public IEnumerable<Subject> Subjects{get; set;}
         public Student student{get; set;}
+        public Subject subject{get; set;}
 
     }
 }
