@@ -1,0 +1,90 @@
+@model TestSystem.Models.StudCourseFaculSubj
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#0000ff;">
+                <h4 style="color: white;">Список студентов</h4>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#FFFFFF;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="StudentList">Список студентов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="TeacherList">Список преподавателей</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="FacultyList">Список факультетов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="SubjectList">Список предметов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h4>
+            </td>
+            <td style="background-color:#F0FFF0;height:800px;text-align:top;"> 
+                <form method="POST">                             
+                <table>
+                <tr>
+                    <td>Курс:                    
+                    <select name="IdCourse">
+                        @foreach (var item in Model.Courses)
+                        {
+                            <option value="@item.CourseId"> @item.CourseName</option>
+                        }
+                    </select>
+                    </td>
+                    <td>Факультет: 
+                    <select name="IdFaculty">
+                        @foreach (var item in Model.Faculties)
+                        {
+                            <option value="@item.FacultyId"> @item.FacultyName</option>
+                        }
+                    </select>   
+                    <td>       
+                    <td><input type="submit" value="Смотреть"> </td>   
+                </form>
+                </tr>    
+            </table>
+            <table border="1">
+            <tr><th> id </th><th>ФИО</th><th>Курс</th><th>Факультет</th><th>Логин</th><th>Действия</th></tr>
+            @foreach (var item in Model.Students)
+            {                   
+                var faculty = "";
+                                foreach(var i in Model.Faculties)
+                                {
+                                    if (i.FacultyId == item.IdFaculty) {faculty = i.FacultyName;}
+                                }  
+                <tr><td>@item.StudentId</td>
+                    <td>@item.StudentFirstName @item.StudentSecondName @item.StudentMiddleName</td>                    
+                    <td>@item.IdCourse</td>
+                    <td>@faculty</td>
+                    <td>@item.StudentLogin</td>
+                    <td><a href="~/Admin/DeleteStudent/@item.StudentId">Удалить</a>
+                         @Html.ActionLink("Изменить", "ChangeStudent", "Admin", 
+                         new {id = item.StudentId}, 
+                        new {@class = "viewDialog", data_dialog_title = "Редактирование данных" })
+                    </td>
+                </tr>
+            }
+            </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html> 

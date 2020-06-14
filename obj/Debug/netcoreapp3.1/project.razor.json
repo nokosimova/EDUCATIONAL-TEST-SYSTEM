@@ -20531,8 +20531,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\AddSubject.cshtml",
+      "TargetPath": "Views\\Admin\\AddSubject.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeRegistration.cshtml",
       "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeSubject.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeSubject.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20541,8 +20551,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\StudentList.cshtml",
+      "TargetPath": "Views\\Admin\\StudentList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeTeacher.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeTeacher.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Student\\Index.cshtml",
       "TargetPath": "Views\\Student\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\FacultyList.cshtml",
+      "TargetPath": "Views\\Admin\\FacultyList.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20566,8 +20591,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeStudent.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeStudent.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\SubjectList.cshtml",
+      "TargetPath": "Views\\Admin\\SubjectList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeFaculty.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeFaculty.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\TeacherList.cshtml",
+      "TargetPath": "Views\\Admin\\TeacherList.cshtml",
       "FileKind": "mvc"
     },
     {

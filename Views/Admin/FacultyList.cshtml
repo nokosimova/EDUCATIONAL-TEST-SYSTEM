@@ -1,4 +1,4 @@
-@model TestSystem.Models.Admin
+@model List<TestSystem.Models.Faculty>
 @{
     Layout = null;
 }
@@ -16,7 +16,7 @@
     <table style="width: 1150px;border:0px;">
         <tr>
             <td colspan="2" style="background-color:#0000ff;">
-                <h3 style="color: white;">Добро пожаловать, @Model.AdminLogin!</h3>
+                <h4 style="color: white;">Список факультетов</h4>
             </td>
         </tr>
         <tr style="vertical-align: top;">
@@ -38,10 +38,27 @@
                 </h4>
             </td>
             <td style="background-color:#F0FFF0;height:800px;text-align:top;"> 
-                
+                <form action="~/Admin/AddFaculty">
+                    <label for="FacultyName">Новый факультет: </label>
+                    <input type="text" id="FacultyName" name="FacultyName" required>
+                    <input type="submit" value="Добавить">
+                </form>
+            <table border="1">
+            <tr><th> id </th><th>Название</th><th>Действия</th></tr>
+            @foreach (var item in Model)
+            {                     
+                <tr><td>@item.FacultyId</td>
+                    <td>@item.FacultyName</td>
+                    <td><a href="~/Admin/DeleteFaculty/@item.FacultyId">Удалить</a>
+                         @Html.ActionLink("Изменить", "ChangeFaculty", "Admin", 
+                         new { id = item.FacultyId }, 
+                        new { @class = "viewDialog", data_dialog_title = "Редактирование данных" })
+                    </td>
+                </tr>
+            }
+            </table>
             </td>
         </tr>
-        <tr></tr>
     </table>
 </body>
 </html> 

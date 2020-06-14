@@ -1,0 +1,86 @@
+@model TestSystem.Models.CourseFacultySubject
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#0000ff;">
+                <h4 style="color: white;">Список предметов</h4>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#FFFFFF;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="StudentList">Список студентов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="TeacherList">Список преподавателей</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="FacultyList">Список факультетов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="SubjectList">Список предметов</a>
+                </h4>
+                <h4 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h4>
+            </td>
+            <td style="background-color:#F0FFF0;height:800px;text-align:top;"> 
+            <h3>        </h3>
+               <div>
+                <h3>Измените данные: </h3>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <form method="POST">
+                        <table>
+                            <td><input type="hidden" name="SubjectId" value="@Model.subject.SubjectId" /> </td>
+                            <tr>
+                                <td>Новое название:</td>
+                                <td><input type="text" name="SubjectName" required value = "@Model.subject.SubjectName" /> вводите начиная с заглавной буквы</td>
+                            </tr>
+                            <tr>  
+                                <td> Курс :</td>
+                                <td>
+                                    <select name="IdCourse">
+                                        @foreach (var item in Model.Courses)
+                                        {
+                                            <option value="@item.CourseId"> @item.CourseName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Факультет :</td>
+                                <td>
+                                    <select name="IdFaculty">
+                                        @foreach (var item in Model.Faculties)
+                                        {
+                                            <option value="@item.FacultyId"> @item.FacultyName</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td><input type="submit" value="Изменить" /> </td><td></td></tr>
+                       </table>
+                   </form>
+                    <form action="~/Admin/SubjectList">
+                        <input type="submit" value="Отменить">
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 
