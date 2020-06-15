@@ -22,14 +22,23 @@
         <tr style="vertical-align: top;">
             <td style="background-color:#CCFF83;width:180px;text-align:top;">
                 <h4 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Index">Главная</a>
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
                 </h4>
                 <h4 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TestList">Список тестов</a>
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
                 </h4>
-                <h4 class="nav-item">
+                <h5 class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
-                </h4>
+                </h5>
             </td>
             <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
                 ДЛЯ КОГО СОЗДАЁТСЯ ТЕСТ?

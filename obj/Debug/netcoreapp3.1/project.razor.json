@@ -20541,6 +20541,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\SuccesMessage.cshtml",
+      "TargetPath": "Views\\Teacher\\SuccesMessage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\final\\test\\Views\\Registration\\TeacherRegistration.cshtml",
       "TargetPath": "Views\\Registration\\TeacherRegistration.cshtml",
       "FileKind": "mvc"
@@ -20553,6 +20558,11 @@
     {
       "FilePath": "c:\\final\\test\\Views\\Admin\\AddSubject.cshtml",
       "TargetPath": "Views\\Admin\\AddSubject.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\TestList.cshtml",
+      "TargetPath": "Views\\Teacher\\TestList.cshtml",
       "FileKind": "mvc"
     },
     {
