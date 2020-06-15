@@ -180,9 +180,17 @@ namespace Project.Controllers
         public IActionResult AddQuestion(int TestId)
         {
             Test test = data.Tests.Find(TestId);
-            if (test != null)
-                return View(test);
-            return RedirectToAction("Error", new{error = "Что-то пошло не так, вернитесь назад!"});
+            if (test == null)
+                return RedirectToAction("Error", new{error = "Что-то пошло не так, вернитесь назад!"});
+                QuestionWithAns model = new QuestionWithAns{                    
+                    question = new Question(),
+                    wrgAns1 = new Answer(),
+                    wrgAns2 = new Answer(),
+                    wrgAns3 = new Answer(),
+                    corrAns = new Answer(),
+                    test = data.Tests.Find(TestId)
+                };
+                return View(model);
         }
         [HttpPost]
         public IActionResult AddQuestion(string QText, int TestId, int Point, string CorrAns, 
@@ -190,12 +198,18 @@ namespace Project.Controllers
         {
             if (!ModelState.IsValid) 
                  return RedirectToAction("Error", new{error = "Данные не передались!"});
-            if (data.Questions.FirstOrDefault(i => i.QuestionText.ToLower() == QText.ToLower()) == null)
-            {   
-                ModelState.AddModelError("TestName", "Такой вопрос уже есть, придумайте новый!!!");
-                if (Point < 1 || Point > 5)   
-                   ModelState.AddModelError("TestName", "Выберит балл от 1 до 5!!!");  
-                return View(TestId);
+            if (Point < 1 || Point > 5)   
+            {
+                QuestionWithAns model= new QuestionWithAns{
+                    question= new Question{QuestionText = QText} ,                    
+                    wrgAns1 = new Answer{AnswerText = WrgAns1},
+                    wrgAns2 = new Answer{AnswerText = WrgAns2},
+                    wrgAns3 = new Answer{AnswerText = WrgAns3},
+                    corrAns = new Answer{AnswerText = CorrAns},
+                    test = data.Tests.Find(TestId)
+                };
+                ModelState.AddModelError("Point", "Выберит балл от 1 до 5!!!");  
+                return View(model);
             }          
             Question question = new Question{
                 QuestionText = QText,
@@ -261,7 +275,18 @@ namespace Project.Controllers
             if (Point < 1 || Point > 5)   
             {    
                 ModelState.AddModelError("TestName", "Выберит балл от 1 до 5!!!"); 
-                return View(QuestionId);
+                Question question = data.Questions.FirstOrDefault(i=>i.QuestionId == QuestionId);
+                List<Answer> answers = data.Answers.Where(i => i.IdQuestion == QuestionId)
+                                      .OrderBy(i=>i.IsRightAnswer).ToList();
+                QuestionWithAns model = new QuestionWithAns{
+                    question = question,                    
+                    wrgAns1 = answers[0],
+                    wrgAns2 = answers[1],
+                    wrgAns3 = answers[2],
+                    corrAns = answers[3],
+                    test = data.Tests.Find(question.IdTest)
+                };
+            return View(model);
             } 
             data.Questions.Find(QuestionId).QuestionText = QText;
             data.Questions.Find(QuestionId).Point = Point;

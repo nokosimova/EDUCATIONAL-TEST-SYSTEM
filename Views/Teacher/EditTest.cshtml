@@ -65,11 +65,13 @@
             </table>
             <br />
             <table border="1">
+                @{int pos = 0;}
             <tr><th>Номер</th><th>Вопрос/ответы</th><th>Балл</th><th>Действия</th></tr>
             @foreach (var item in Model.qaList)
             {                   
+                pos = pos + 1;
                 <tr>
-                    <td>@item.question.QuestionId</td>                    
+                    <td>pos</td>                    
                     <td>
                         @item.question.QuestionText<br style="color: green;"/>
                         <br /> а) @item.corrAns.AnswerText -КЛЮЧ

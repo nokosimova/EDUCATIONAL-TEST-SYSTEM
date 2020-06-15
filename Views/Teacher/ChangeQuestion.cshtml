@@ -41,14 +41,15 @@
                 </h5>
             </td>
             <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+               <h4>Тест: @Model.test.TestName <br /> Измените данные: </h4>
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                <h4>Тест: @Model.test.TestName <br /> Новый вопрос: </h4>
                 <br></br>
                  <form method="POST">
                         <table>
                             <tr>
-                                <td>Текст вопроса:</td>
-                                <td><textarea name="QText" rows="5" cols="50"  required>@Model.question.QuestionText</textarea>
+                                <td>Текст вопроса:
+                                <textarea name="QText" rows="5" cols="50"  required>@Model.question.QuestionText</textarea>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Балл (от 1 до 5 баллов):
