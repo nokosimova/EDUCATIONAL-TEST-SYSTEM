@@ -16,7 +16,7 @@
     <table style="width: 1150px;border:0px;">
         <tr>
             <td colspan="2" style="background-color:#47C607;">
-                <h3 style="color: white;">Добро пожаловать @Model.TeacherId :  @Model.TeacherSecondName @Model.TeacherMiddleName</h3>
+                <h3 style="color: white;">Добро пожаловать  @Model.TeacherSecondName @Model.TeacherMiddleName</h3>
             </td>
         </tr>
         <tr style="vertical-align: top;">
@@ -36,14 +36,12 @@
                      controllerName: "Teacher",routeValues: new {TeacherId = @Model.TeacherId},
                      htmlAttributes: null)
                 </h4>
-                <h5 class="nav-item">
+                <h4 class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
-                </h5>
+                </h4>
             </td>
-            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
-                *ЧТОБЫ СОЗДАТЬ НОВЫЙ ТЕСТ ПРОЙДИТЕ ПО ССЫЛКЕ "СОЗДАТЬ ТЕСТ"
-                *ЧТОБЫ РЕДАКТИРОВАТЬ УЖЕ СУЩЕСТВУЮЩИЙ ТЕСТ, ДОБАВЛЯТЬ ВОПРОСЫ,
-                  ПЕРЕЙДИТЕ В "СПИСОК ТЕСТОВ"
+             <td style="color: green; background-color:#FFFFFF;height:800px;text-align:top;"> 
+               <h3>Тест успешно создан! Для добавления вопросов перейдите в СПИСОК ТЕСТОВ!</h3>
             </td>
         </tr>
         <tr></tr>

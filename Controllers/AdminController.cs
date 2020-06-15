@@ -138,6 +138,10 @@ namespace Project.Controllers
         }
         public IActionResult DeleteFaculty(int Id)
         {
+            if (ModelState.IsValid)
+            {     
+                
+            }
             data.Faculties.Remove(data.Faculties.Find(Id));
             data.SaveChanges();
             return RedirectToAction("FacultyList",data.Faculties.ToList());

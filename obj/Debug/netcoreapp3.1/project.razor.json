@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\vsprojects\\FINAL\\Project\\TestSystem.csproj",
+  "FilePath": "c:\\final\\test\\TestSystem.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,123 +20521,158 @@
   "RootNamespace": "TestSystem",
   "Documents": [
     {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Teacher\\Index.cshtml",
-      "TargetPath": "Views\\Teacher\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\Index.cshtml",
-      "TargetPath": "Views\\Admin\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\AddSubject.cshtml",
-      "TargetPath": "Views\\Admin\\AddSubject.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeRegistration.cshtml",
-      "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeSubject.cshtml",
-      "TargetPath": "Views\\Admin\\ChangeSubject.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\StudentList.cshtml",
-      "TargetPath": "Views\\Admin\\StudentList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeTeacher.cshtml",
-      "TargetPath": "Views\\Admin\\ChangeTeacher.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Student\\Index.cshtml",
-      "TargetPath": "Views\\Student\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\FacultyList.cshtml",
-      "TargetPath": "Views\\Admin\\FacultyList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\Index.cshtml",
-      "TargetPath": "Views\\Registration\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\TeacherRegistration.cshtml",
-      "TargetPath": "Views\\Registration\\TeacherRegistration.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\HomeEntry.cshtml",
-      "TargetPath": "Views\\Home\\HomeEntry.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeStudent.cshtml",
-      "TargetPath": "Views\\Admin\\ChangeStudent.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\SubjectList.cshtml",
-      "TargetPath": "Views\\Admin\\SubjectList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\ChangeFaculty.cshtml",
-      "TargetPath": "Views\\Admin\\ChangeFaculty.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Admin\\TeacherList.cshtml",
-      "TargetPath": "Views\\Admin\\TeacherList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\StudentRegistration.cshtml",
-      "TargetPath": "Views\\Registration\\StudentRegistration.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Registration\\Result.cshtml",
+      "FilePath": "c:\\final\\test\\Views\\Registration\\Result.cshtml",
       "TargetPath": "Views\\Registration\\Result.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\final\\test\\Views\\Home\\HomeEntry.cshtml",
+      "TargetPath": "Views\\Home\\HomeEntry.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\ChangeFaculty.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeFaculty.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\ChangeStudent.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeStudent.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\SuccesMessage.cshtml",
+      "TargetPath": "Views\\Teacher\\SuccesMessage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Registration\\TeacherRegistration.cshtml",
+      "TargetPath": "Views\\Registration\\TeacherRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\AddSubject.cshtml",
+      "TargetPath": "Views\\Admin\\AddSubject.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\TestList.cshtml",
+      "TargetPath": "Views\\Teacher\\TestList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\StudentList.cshtml",
+      "TargetPath": "Views\\Admin\\StudentList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\vsprojects\\FINAL\\Project\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\final\\test\\Views\\Admin\\ChangeTeacher.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeTeacher.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\Index.cshtml",
+      "TargetPath": "Views\\Teacher\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\ChangeSubject.cshtml",
+      "TargetPath": "Views\\Admin\\ChangeSubject.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\ChangeQuestion.cshtml",
+      "TargetPath": "Views\\Teacher\\ChangeQuestion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\ChooseSubj.cshtml",
+      "TargetPath": "Views\\Teacher\\ChooseSubj.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\SubjectList.cshtml",
+      "TargetPath": "Views\\Admin\\SubjectList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\AddQuestion.cshtml",
+      "TargetPath": "Views\\Teacher\\AddQuestion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\Index.cshtml",
+      "TargetPath": "Views\\Admin\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\FacultyList.cshtml",
+      "TargetPath": "Views\\Admin\\FacultyList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Admin\\TeacherList.cshtml",
+      "TargetPath": "Views\\Admin\\TeacherList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Home\\HomeRegistration.cshtml",
+      "TargetPath": "Views\\Home\\HomeRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Registration\\Index.cshtml",
+      "TargetPath": "Views\\Registration\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Student\\Index.cshtml",
+      "TargetPath": "Views\\Student\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Registration\\StudentRegistration.cshtml",
+      "TargetPath": "Views\\Registration\\StudentRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\CreateTest.cshtml",
+      "TargetPath": "Views\\Teacher\\CreateTest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\EditTest.cshtml",
+      "TargetPath": "Views\\Teacher\\EditTest.cshtml",
       "FileKind": "mvc"
     }
   ],

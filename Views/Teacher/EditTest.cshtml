@@ -1,0 +1,100 @@
+@model TestSystem.Models.TestEditModel
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#47C607;">
+                <h3 style="color: white;">Новый тест</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#CCFF83;width:180px;text-align:top;">
+               <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+            <h3> ТЕСТ: @Model.test.TestName </h3>   
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <table>
+            <tr>
+                <td>
+                <form action="~/Teacher/TestList">
+                    <input type="hidden" name="TeacherId" value="@Model.test.IdTeacher" /> 
+                    <input type="submit" value="Назад">
+                </form>
+                </td><td>
+                <td>           </td>
+                <form action="~/Teacher/AddQuestion">
+                    <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
+                    <input type="submit" value="Добавить новый вопрос">
+                </form> </td>
+                <td>                  </td>
+                <form action="~/Teacher/DeleteTest">
+                    <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
+                    <input style="color: red;" type="submit" value="УДАЛИТЬ ТЕСТ">
+                </form> </td>
+            </tr>
+            </table>
+            <br />
+            <table border="1">
+                @{int pos = 0;}
+            <tr><th>Номер</th><th>Вопрос/ответы</th><th>Балл</th><th>Действия</th></tr>
+            @foreach (var item in Model.qaList)
+            {                   
+                pos = pos + 1;
+                <tr>
+                    <td>pos</td>                    
+                    <td>
+                        @item.question.QuestionText<br style="color: green;"/>
+                        <br /> а) @item.corrAns.AnswerText -КЛЮЧ
+                        <br /> б) @item.wrgAns1.AnswerText
+                        <br /> в) @item.wrgAns2.AnswerText
+                        <br /> г) @item.wrgAns3.AnswerText
+                    </td>
+                    <td>@item.question.Point</td>
+                    <td>
+                        @Html.ActionLink("Удалить", "DeleteQuestion", "Teacher", 
+                         new {QuestionId = item.question.QuestionId}, 
+                        new {@class = "viewDialog", data_dialog_title = "Редактирование данных" })
+                        <br />
+                         @Html.ActionLink("Изменить", "ChangeQuestion", "Teacher", 
+                         new {QuestionId = @item.question.QuestionId}, 
+                        new {@class = "viewDialog", data_dialog_title = "Редактирование данных" })
+                    </td>
+                </tr>
+            }
+            </table>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 

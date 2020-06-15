@@ -25,6 +25,7 @@ namespace TestSystem.Db
         public DbSet<AnsQuestion> AnsQuestions{get; set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //начальные данные в табицах
             builder.Entity<Course>().HasData(
                 new Course{CourseId = 1, CourseName = "1"},
                 new Course{CourseId = 2, CourseName = "2"},
@@ -39,7 +40,17 @@ namespace TestSystem.Db
                 new Admin{AdminId = 1, 
                 AdminLogin = "admin007", 
                 AdminPassword = "iamaboss"}
-            );   
+            );
+           // каскадное удаление для связных таблиц
+
+           builder.Entity<Subject>()
+            .HasOne(p => p.Faculty)
+            .WithMany(t => t.Subjects)
+            .OnDelete(DeleteBehavior.Cascade);   
+           builder.Entity<Subject>()
+            .HasOne(p => p.Course)
+            .WithMany(t => t.Subjects)
+            .OnDelete(DeleteBehavior.Cascade);  
         }
     }
 }

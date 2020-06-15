@@ -377,11 +377,13 @@ namespace TestSystem.Migrations
                 {
                     b.HasOne("TestSystem.Models.Course", "Course")
                         .WithMany("Subjects")
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TestSystem.Models.Faculty", "Faculty")
                         .WithMany("Subjects")
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TestSystem.Models.Test", b =>

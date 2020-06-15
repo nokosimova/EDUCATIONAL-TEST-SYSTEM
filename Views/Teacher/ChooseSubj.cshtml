@@ -1,0 +1,76 @@
+@model TestSystem.Models.CourseFacultySubject
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#47C607;">
+                <h3 style="color: white;">Новый тест</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#CCFF83;width:180px;text-align:top;">
+               <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.test.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <form method="POST">
+                        <table>
+                            <tr>
+                                <td>Название теста:</td>
+                                <td><input type="text" name="TestName" required /> </td>
+                            </tr>
+                            <td><input type="hidden" name="IdTeacher" value="1" /> </td>                             
+                            <tr>  
+                                <td> Предмет :</td>
+                                <td>
+                                    <select name="IdSubject">
+                                        @foreach (var item in Model.Subjects)
+                                        {
+                                            <option value="@item.SubjectId"> @item.SubjectName</option>
+                                        }
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td><input type="submit" value="Создать тест" /> </td><td></td></tr>
+                       </table>
+                   </form>
+                    <form action="~/Teacher/Index">
+                        <input type="hidden" name="TeacherId" value="@Model.test.IdTeacher" /> 
+                        <input type="submit" value="Отменить">
+                    </form>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 
