@@ -87,7 +87,7 @@ namespace Project.Controllers
         {
             return View(data.Teachers.Find(TeacherId));
         }
-        //редактирование тестов, добавление, изменение, удаление вопросов
+        //методы для просмотра тестов
         public IActionResult TestList(int TeacherId)
         {
             if (TeacherId != 1) return RedirectToAction("Error", new{error = "NO ID"});
@@ -98,7 +98,7 @@ namespace Project.Controllers
             courses.Insert(0, allCourse);
             faculties.Insert(0, allFaculty);
             
-           TestHelperModel model = new TestHelperModel{
+           TestCreateModel model = new TestCreateModel{
                 Courses = courses, 
                 Faculties = faculties,
                 teacher = new Teacher{TeacherId = TeacherId}  };
@@ -110,7 +110,7 @@ namespace Project.Controllers
         [HttpPost]
         public IActionResult TestList(int Idcourse, int Idfaculty, int Idteacher)
         {
-            if (Idteacher != 1) return RedirectToAction("Error", new{error = "NO ID"});
+            if (Idteacher != 1) return RedirectToAction("Error", new{error = "NO ID in POST"});
             Course allCourse = new Course{CourseId = 0, CourseName = "Все курсы"};
             Faculty allFaculty = new Faculty{FacultyId = 0, FacultyName = "Все факультеты"};
             List<Course> courses = data.Courses.ToList();
@@ -118,20 +118,16 @@ namespace Project.Controllers
             courses.Insert(0, allCourse);
             faculties.Insert(0, allFaculty);
             
-           TestHelperModel model = new TestHelperModel{
+           TestCreateModel model = new TestCreateModel{
                Courses = courses, 
                Faculties = faculties,
                teacher = new Teacher{TeacherId = Idteacher}  };
-            if (Idcourse == 0)
+               model.Subjects = data.Subjects.ToList();
+               model.Tests = data.Tests.Where(i => i.IdTeacher == Idteacher);
+            if (Idcourse > 0)
             {
-                model.Subjects = data.Subjects.ToList();
-                model.Tests = data.Tests.Where(i => i.IdTeacher == Idteacher)
-                                        .OrderBy(i => i.IdSubject).ToList();
-            }
-            else
-            {
-                model.Subjects = data.Subjects.Where(i => i.IdCourse == Idcourse).ToList();
-                model.Tests = data.Tests.Where(i => data.Subjects.Find(i.IdSubject).IdCourse == Idcourse)
+                model.Subjects = model.Subjects.Where(i => i.IdCourse == Idcourse).ToList();
+                model.Tests = model.Tests.Where(i => data.Subjects.Find(i.IdSubject).IdCourse == Idcourse)
                                         .OrderBy(i => i.IdSubject).ToList();
             }
             if (Idfaculty > 0)
@@ -141,6 +137,141 @@ namespace Project.Controllers
                                         .OrderBy(i => i.IdSubject).ToList();
             }
             return View(model);
+        }
+        //метод для удаления тестов
+        public IActionResult DeleteTest(int? TestId)
+        {
+            Test test = data.Tests.Find(TestId);
+            if (TestId == null) 
+                return RedirectToAction("Error", new{error = "ТЕСТid null!"});
+            int teacherId = test.IdTeacher;
+            data.Tests.Remove(test);
+            data.SaveChanges();
+            return RedirectToAction("TestList", new{ TeacherId = teacherId });            
+        }    
+        //методы для редактирования тестов:
+        public IActionResult EditTest(int TestId)
+        {
+            Test test = data.Tests.Find(TestId);
+            if (test == null) 
+                return RedirectToAction("Error", new{error = "ТЕСТ не найден!"});
+            List<Question> questions = data.Questions.Where(i => i.IdTest == TestId).ToList();
+            List<QuestionWithAns> questionWithAnsList = new List<QuestionWithAns>();
+            List<Answer> answers = new List<Answer>();
+            foreach(var item in questions)
+            {
+                answers = data.Answers.Where(i => i.IdQuestion == item.QuestionId)
+                                      .OrderBy(i=>i.IsRightAnswer).ToList();
+                QuestionWithAns questionWithAns= new QuestionWithAns{
+                    question = item,                    
+                    wrgAns1 = answers[0],
+                    wrgAns2 = answers[1],
+                    wrgAns3 = answers[2],
+                    corrAns = answers[3],
+                    test = test
+                };
+                questionWithAnsList.Add(questionWithAns);
+            }
+            TestEditModel model = new TestEditModel{
+                qaList = questionWithAnsList,
+                test = test};
+            return View(model);            
+        }
+        public IActionResult AddQuestion(int TestId)
+        {
+            Test test = data.Tests.Find(TestId);
+            if (test != null)
+                return View(test);
+            return RedirectToAction("Error", new{error = "Что-то пошло не так, вернитесь назад!"});
+        }
+        [HttpPost]
+        public IActionResult AddQuestion(string QText, int TestId, int Point, string CorrAns, 
+                                         string WrgAns1, string WrgAns2, string WrgAns3)
+        {
+            if (!ModelState.IsValid) 
+                 return RedirectToAction("Error", new{error = "Данные не передались!"});
+            if (data.Questions.FirstOrDefault(i => i.QuestionText.ToLower() == QText.ToLower()) == null)
+            {   
+                ModelState.AddModelError("TestName", "Такой вопрос уже есть, придумайте новый!!!");
+                if (Point < 1 || Point > 5)   
+                   ModelState.AddModelError("TestName", "Выберит балл от 1 до 5!!!");  
+                return View(TestId);
+            }          
+            Question question = new Question{
+                QuestionText = QText,
+                Point = Point,
+                IdTest = TestId    
+            };
+            data.Questions.Add(question);
+            data.SaveChanges();
+            int QuestionId = data.Questions.FirstOrDefault(i => i.QuestionText == QText 
+                                            && i.IdTest == TestId).QuestionId;
+            data.Answers.Add(new Answer{
+                AnswerText = CorrAns, 
+                IdQuestion = QuestionId,
+                IsRightAnswer = true}); //верный ответ
+            data.Answers.Add(new Answer{
+                AnswerText = WrgAns1, 
+                IdQuestion = QuestionId,
+                IsRightAnswer = false});
+            data.Answers.Add(new Answer{
+                AnswerText = WrgAns2, 
+                IdQuestion = QuestionId,
+                IsRightAnswer = false});
+            data.Answers.Add(new Answer{
+                AnswerText = WrgAns3, 
+                IdQuestion = QuestionId,
+                IsRightAnswer = false});
+            data.SaveChanges();
+            return RedirectToAction("EditTest", new{TestId = TestId});
+        }
+        public IActionResult DeleteQuestion(int? QuestionId)
+        {
+            Question question = data.Questions.Find(QuestionId);
+            if (question == null) 
+                return RedirectToAction("Error", new{error = "Вопрос не найден!"});
+            int TestId = question.IdTest;
+            data.Questions.Remove(question);
+            data.SaveChanges();
+            return RedirectToAction("EditTest", new{TestId = TestId});        
+        }    
+        public IActionResult ChangeQuestion(int? QuestionId)
+        {
+            if (data.Questions.FirstOrDefault(i=>i.QuestionId == QuestionId) == null)
+                return RedirectToAction("Error", new{error = "Вопрос не найден!"});
+            Question question = data.Questions.FirstOrDefault(i=>i.QuestionId == QuestionId);
+            List<Answer> answers = data.Answers.Where(i => i.IdQuestion == QuestionId)
+                                      .OrderBy(i=>i.IsRightAnswer).ToList();
+                QuestionWithAns model = new QuestionWithAns{
+                    question = question,                    
+                    wrgAns1 = answers[0],
+                    wrgAns2 = answers[1],
+                    wrgAns3 = answers[2],
+                    corrAns = answers[3],
+                    test = data.Tests.Find(question.IdTest)
+                };
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult ChangeQuestion(string QText, int QuestionId, int Point, string CorrAns, string WrgAns1, 
+                                            string WrgAns2, string WrgAns3, int id1, int id2, int id3)
+        {
+            if (data.Questions.Find(QuestionId) == null)
+                return RedirectToAction("Error", new{error = "Вопрос не найден!"});
+            if (Point < 1 || Point > 5)   
+            {    
+                ModelState.AddModelError("TestName", "Выберит балл от 1 до 5!!!"); 
+                return View(QuestionId);
+            } 
+            data.Questions.Find(QuestionId).QuestionText = QText;
+            data.Questions.Find(QuestionId).Point = Point;
+            data.Answers.Find(id1).AnswerText = WrgAns1;
+            data.Answers.Find(id2).AnswerText = WrgAns2;
+            data.Answers.Find(id3).AnswerText = WrgAns3;
+            data.Answers.FirstOrDefault(i => i.IdQuestion == QuestionId 
+                                        && i.IsRightAnswer == true).AnswerText = CorrAns;
+            data.SaveChanges();
+            return RedirectToAction("EditTest", new{TestId =  data.Questions.Find(QuestionId).IdTest });
         }
         public string Error(string error)
         {

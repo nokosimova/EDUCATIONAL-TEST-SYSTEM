@@ -20596,6 +20596,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\ChangeQuestion.cshtml",
+      "TargetPath": "Views\\Teacher\\ChangeQuestion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\final\\test\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -20618,6 +20623,11 @@
     {
       "FilePath": "c:\\final\\test\\Views\\Admin\\SubjectList.cshtml",
       "TargetPath": "Views\\Admin\\SubjectList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\AddQuestion.cshtml",
+      "TargetPath": "Views\\Teacher\\AddQuestion.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20658,6 +20668,11 @@
     {
       "FilePath": "c:\\final\\test\\Views\\Teacher\\CreateTest.cshtml",
       "TargetPath": "Views\\Teacher\\CreateTest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Teacher\\EditTest.cshtml",
+      "TargetPath": "Views\\Teacher\\EditTest.cshtml",
       "FileKind": "mvc"
     }
   ],

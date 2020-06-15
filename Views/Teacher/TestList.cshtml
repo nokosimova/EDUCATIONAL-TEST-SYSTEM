@@ -1,4 +1,4 @@
-@model TestSystem.Models.TestHelperModel
+@model TestSystem.Models.TestCreateModel
 @{
     Layout = null;
 }
@@ -64,21 +64,34 @@
                     <td>       
                     <td><input type="submit" value="Смотреть"> </td>   
                 </form>
+                </table>
+                <br />
                <table border="1">
-            <tr><th> id </th><th>Название теста</th><th>Предмет</th><th><th>Действия</th></tr>
+            <tr><th>Название теста</th><th>Предмет</th><th>Курс</th><th>Факультет</th><th>Действия</th></tr>
             @foreach (var item in Model.Tests)
             {                   
                 var subject = "";
-                                foreach(var i in Model.Subjects)
-                                {
-                                    if (i.SubjectId == item.IdSubject) {subject = i.SubjectName;}
-                                }  
-                <tr><td>@item.TestId</td>
+                var faculty = ""; 
+                var course = "";
+                foreach(var i in Model.Subjects)
+                {
+                    if (i.SubjectId == item.IdSubject) {
+                        subject = i.SubjectName;
+                        foreach(var j in Model.Faculties)
+                        {
+                            if (j.FacultyId == i.IdFaculty) {faculty = j.FacultyName;}
+                        }
+                        course = i.IdCourse.ToString();
+                    }
+                }
+                <tr>
                     <td>@item.TestName</td>                    
                     <td>@subject</td>
-                    <td><a href="~/Admin/DeleteStudent/@item.TestId">Удалить</a>
-                         @Html.ActionLink("Изменить", "ChangeStudent", "Admin", 
-                         new {id = item.TestId}, 
+                    <td>@course</td>
+                    <td>@faculty</td>
+                    <td>
+                         @Html.ActionLink("Перейти", "EditTest", "Teacher", 
+                         new {TestId = item.TestId}, 
                         new {@class = "viewDialog", data_dialog_title = "Редактирование данных" })
                     </td>
                 </tr>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace TestSystem.Models
 {
-    public class TestHelperModel
+    public class TestCreateModel
     {
         public IEnumerable<Course> Courses{get; set;}
         public IEnumerable<Faculty> Faculties{get; set;}

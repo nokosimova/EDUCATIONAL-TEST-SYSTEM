@@ -1,0 +1,89 @@
+@model TestSystem.Models.Test
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#47C607;">
+                <h3 style="color: white;">Новый тест</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#CCFF83;width:180px;text-align:top;">
+               <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.IdTeacher},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <h4>Тест: @Model.TestName <br /> Новый вопрос: </h4>
+                <br></br>
+                 <form method="POST">
+                        <table>
+                            <tr>
+                                <td>Текст вопроса:</td>
+                                <td><textarea name="QText" rows="5" cols="50" required></textarea>
+                            </tr>
+                            <tr>
+                                <td>Балл (от 1 до 5 баллов):
+                                <input type="number" name="Point" required[1-5] /> </td>
+                            </tr>
+                            <tr>
+                                <td style="color: green;"> Верный ответ:
+                                <input type="text" name="CorrAns" aria-colcount="50" required /> </td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Неверный ответ 1:
+                                <input type="text" name="WrgAns1" aria-colcount="50" required /> </td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Неверный ответ 2:
+                                <input type="text" name="WrgAns2" aria-colcount="50" required /> </td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Неверный ответ 3:
+                                <input type="text" name="WrgAns3" aria-colcount="50" required /> </td>
+                            </tr>
+                        </table>   
+                        <input type="hidden" name="TestId" value="@Model.TestId" /> 
+                    <br><br>
+                    <table>
+                    <input type="submit" value="Сохранить">
+                </form>
+                    <form action="~/Teacher/EditTest">
+                      <input type="hidden" name="TestId" value="@Model.TestId" /> 
+                      <input type="submit" value="Назад">
+                    </form>  
+                    </table>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 
