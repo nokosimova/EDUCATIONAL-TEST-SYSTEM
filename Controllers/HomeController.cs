@@ -48,12 +48,11 @@ namespace TestSystem.Controllers
             if (data.Students.FirstOrDefault(i => (i.StudentLogin == login && i.StudentPassword == password)) != null)
             {                    
                 Student student = data.Students.FirstOrDefault(i => (i.StudentLogin == login && i.StudentPassword == password));
-                return RedirectToAction("Index","Student", student);
+                return RedirectToAction("Index","Student", new{StudentId = student.StudentId});
             }
             if (data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password)) != null)
             {
                 Teacher teacher = data.Teachers.FirstOrDefault(i => (i.TeacherLogin == login && i.TeacherPassword == password));
-
                 return RedirectToAction("Index","Teacher",new{TeacherId = teacher.TeacherId});
             }                                
             ModelState.AddModelError("login", "Неверный логин или пароль. Попробуйте снова");               

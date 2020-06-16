@@ -35,7 +35,7 @@ namespace Project.Controllers
             CourseFacultySubject{                
                 Courses = data.Courses,
                 Faculties = data.Faculties,
-                student = free
+                student = new Student()
             };
             return View(model);
         }

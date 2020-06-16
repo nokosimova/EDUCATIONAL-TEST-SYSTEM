@@ -1,3 +1,4 @@
+@model TestSystem.Models.Student
 @{
     Layout = null;
 }
@@ -14,24 +15,35 @@
 
     <table style="width: 1150px;border:0px;">
         <tr>
-            <td colspan="2" style="background-color:#F5DEB3;">
-                <h1 style="color: black;">Система тестирования</h1>
+            <td colspan="2" style="background-color:#00B8E9;">
+                <h3 style="color: white;">Добро пожаловать  @Model.StudentFirstName @Model.StudentSecondName !</h3>
             </td>
         </tr>
         <tr style="vertical-align: top;">
-            <td style="background-color:#F4A460;width:180px;text-align:top;">
-                <h3 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
-                </h3>
-                <h3 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HomeEntry">Вход</a>
-                </h3>
-                 <h3 class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HomeRegistration">Регистрация</a>
-                </h3>
+            <td style="background-color:#B7E4F0;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Результаты", actionName: "TestResults",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
             </td>
-            <td style="background-color:#FFE4C4;height:800px;text-align:top;"> 
-                ПРИВЕТ СТУДЕНТ
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+                *ЧТОБЫ СОЗДАТЬ НОВЫЙ ТЕСТ ПРОЙДИТЕ ПО ССЫЛКЕ "СОЗДАТЬ ТЕСТ"
+                *ЧТОБЫ РЕДАКТИРОВАТЬ УЖЕ СУЩЕСТВУЮЩИЙ ТЕСТ, ДОБАВЛЯТЬ ВОПРОСЫ,
+                  ПЕРЕЙДИТЕ В "СПИСОК ТЕСТОВ"
             </td>
         </tr>
         <tr></tr>

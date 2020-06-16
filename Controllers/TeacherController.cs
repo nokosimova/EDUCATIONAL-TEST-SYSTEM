@@ -90,7 +90,7 @@ namespace Project.Controllers
         //методы для просмотра тестов
         public IActionResult TestList(int TeacherId)
         {
-            if (TeacherId != 1) return RedirectToAction("Error", new{error = "NO ID"});
+            if (!ModelState.IsValid) return RedirectToAction("Error", new{error = "Что-то пошло не так"});
             Course allCourse = new Course{CourseId = 0, CourseName = "Все курсы"};
             Faculty allFaculty = new Faculty{FacultyId = 0, FacultyName = "Все факультеты"};
             List<Course> courses = data.Courses.ToList();

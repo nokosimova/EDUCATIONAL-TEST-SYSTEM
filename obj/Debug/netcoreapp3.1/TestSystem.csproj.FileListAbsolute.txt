@@ -258,3 +258,6 @@ C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\TestList.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\AddQuestion.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\ChangeQuestion.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\EditTest.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\TestList.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\FinishTest.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\StartTest.cshtml.g.cs

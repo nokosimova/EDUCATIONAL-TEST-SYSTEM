@@ -1,0 +1,97 @@
+@model TestSystem.Models.CourseFacultySubject
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#00B8E9;">
+                <h3 style="color: white;">Cписок тестов</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#B7E4F0;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Результаты", actionName: "TestResults",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+            <h3> СПИСОК ТЕСТОВ:</h3>
+                  <form method="POST">                           
+                <table>
+                    <td><input type="hidden" name="StudentId" value="@Model.student.StudentId" /> </td>
+                <tr>
+                    <td>Курс:                    
+                    <select name="SubjectId">
+                        @foreach (var item in Model.Courses)
+                        {
+                            <option value="@item.CourseId"> @item.CourseName</option>
+                        }
+                    </select>
+                    </td>    
+                    <td><input type="submit" value="Смотреть"> </td>   
+                </form>
+                </table>
+                <br />
+               <table border="2">
+                   @{int pos = 0;}
+            <tr><th>Название теста</th><th>Предмет</th><th>Колическтво вопросов</th><th>Максимальный балл</th><th>Действие</th></tr>
+            @foreach (var item in Model.Tests)
+            {   
+                pos = pos + 1;                
+                var subject = "";
+                foreach(var i in Model.Subjects)
+                {
+                    if (i.SubjectId == item.IdSubject) 
+                    {
+                        subject = i.SubjectName;
+                    }
+                }
+                <tr>
+                    <td>@pos </td>
+                    <td>@item.TestName</td>                    
+                    <td>@subject</td>
+                    <td>
+                         @Html.ActionLink("ПРОЙТИ ТЕСТ", "StartTest", "Student", 
+                         new {TestId = item.TestId, StudentId = @Model.student.StudentId}, 
+                        new {@class = "viewDialog", data_dialog_title = "Тестирование" })
+                    </td>
+                </tr>
+            }
+            </table>
+            
+            </td>
+        </tr>
+        <tr></tr>
+    
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 
