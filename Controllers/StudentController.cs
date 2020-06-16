@@ -53,7 +53,7 @@ namespace Project.Controllers
                 Tests = data.Tests.Where(i => i.IdSubject == SubjectId)};
             return View(model);
         }
-    // методы для прохождения тестов
+    // методы для прохождения студентом тестов
     public IActionResult StartTestPage(int? TestId, int? StudentId)
     {
         Test test = data.Tests.Find(TestId);
@@ -68,6 +68,48 @@ namespace Project.Controllers
         };
         return View(model);
     }
+    
+    [HttpGet]
+    public IActionResult Question(int? TestId, int? StudentId, int QuestionOrder)
+    {
+        Test test = data.Tests.Find(TestId);
+        Student student = data.Students.Find(StudentId);
+        if (QuestionOrder < 0) QuestionOrder = 0;
+        Question currectQuestion = data.Questions.Where(i => i.IdTest == test.TestId)
+                                                 .OrderBy(i => i.QuestionId).ToList()[QuestionOrder];
+        if (currectQuestion == null) 
+            return RedirectToAction("Error", new{error = "Вопрос не найден!"});
+        List<Answer> answers = data.Answers.Where(i => i.IdQuestion == currectQuestion.QuestionId)
+                                      .OrderBy(i=>i.IsRightAnswer).ToList();
+        List<int> ordr = randOrdr();
+        QuestionWithAns questionWithAns= new QuestionWithAns{
+                    question = currectQuestion,                    
+                    wrgAns1 = answers[ordr[0]],
+                    wrgAns2 = answers[ordr[1]],
+                    wrgAns3 = answers[ordr[2]],
+                    corrAns = answers[ordr[3]],
+                };
 
+        TakeTestHelper model = new TakeTestHelper{
+            QuestWithAns = questionWithAns,
+            student = student,
+            test = test,
+            QuestionAmmount = data.Questions.Where(i => i.IdTest == test.TestId).Count(),
+            QuestionOrder = QuestionOrder
+        };
+        return View(model);
+    }
+    public static List<int> randOrdr()
+    {
+        List<int> list = new List<int>();
+        Random rand = new Random();
+        for (int i = 0; i < 4; i++)
+            list.Add(rand.Next(0,3));
+        return list;
+    }
+    public string Error(string error)
+        {
+            return $"ERROR MESSAGE:{error} ";
+        }
     }
 }
