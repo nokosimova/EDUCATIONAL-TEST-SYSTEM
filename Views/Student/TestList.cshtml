@@ -45,12 +45,11 @@
                   <form method="POST">                           
                 <table>
                     <td><input type="hidden" name="StudentId" value="@Model.student.StudentId" /> </td>
-                <tr>
                     <td>Курс:                    
                     <select name="SubjectId">
-                        @foreach (var item in Model.Courses)
+                        @foreach (var item in Model.Subjects)
                         {
-                            <option value="@item.CourseId"> @item.CourseName</option>
+                            <option value="@item.SubjectId"> @item.SubjectName</option>
                         }
                     </select>
                     </td>    
@@ -60,9 +59,9 @@
                 <br />
                <table border="2">
                    @{int pos = 0;}
-            <tr><th>Название теста</th><th>Предмет</th><th>Колическтво вопросов</th><th>Максимальный балл</th><th>Действие</th></tr>
+            <tr><th>№</th><th>Название теста</th><th>Предмет</th><th>Количество вопросов</th><th>Действие</th></tr>
             @foreach (var item in Model.Tests)
-            {   
+            {
                 pos = pos + 1;                
                 var subject = "";
                 foreach(var i in Model.Subjects)
@@ -77,18 +76,16 @@
                     <td>@item.TestName</td>                    
                     <td>@subject</td>
                     <td>
-                         @Html.ActionLink("ПРОЙТИ ТЕСТ", "StartTest", "Student", 
+                         @Html.ActionLink("ПРОЙТИ ТЕСТ", "StartTestPage", "Student", 
                          new {TestId = item.TestId, StudentId = @Model.student.StudentId}, 
                         new {@class = "viewDialog", data_dialog_title = "Тестирование" })
                     </td>
                 </tr>
             }
             </table>
-            
             </td>
         </tr>
         <tr></tr>
-    
             </td>
         </tr>
         <tr></tr>

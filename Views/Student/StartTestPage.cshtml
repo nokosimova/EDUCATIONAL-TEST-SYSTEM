@@ -1,0 +1,65 @@
+@model TestSystem.Models.TakeTestHelper
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#00B8E9;">
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#B7E4F0;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Результаты", actionName: "TestResults",
+                     controllerName: "Student",routeValues: new {StudentId = @Model.student.StudentId},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+            <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+                <h3>ТЕСТ: @Model.test.TestName</h3><br />
+                <table>
+                <tr><td>Количество вопросов: @Model.QuestionAmmount</td> </tr>
+                <tr><td>Максимальный балл: @Model.ResultPoint</td> </tr>
+                <tr><td><form action="~/Student/TestList">
+                    <input type="hidden" name="StudentId" value="@Model.student.StudentId" /> 
+                    <input type="submit" value="Назад">
+                </form></td>
+                <td><form action="~/Student/Question">
+                @{int order = 0;}
+                    <input type="hidden" name="StudentId" value="@Model.student.StudentId" />
+                    <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
+                    <input type="hidden" name="QuestionOrder" value="@order" />
+                    <input style="color: green;" type="submit" value="НАЧАТЬ ТЕСТИРОВАНИЕ">
+                </form> </td></tr>
+                </table>
+            </td>
+        </tr>
+       </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 

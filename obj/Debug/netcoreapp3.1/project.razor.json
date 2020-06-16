@@ -20531,11 +20531,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\final\\test\\Views\\Student\\StartTest.cshtml",
-      "TargetPath": "Views\\Student\\StartTest.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\final\\test\\Views\\Admin\\ChangeFaculty.cshtml",
       "TargetPath": "Views\\Admin\\ChangeFaculty.cshtml",
       "FileKind": "mvc"
@@ -20571,6 +20566,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\final\\test\\Views\\Student\\Question.cshtml",
+      "TargetPath": "Views\\Student\\Question.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\final\\test\\Views\\Admin\\StudentList.cshtml",
       "TargetPath": "Views\\Admin\\StudentList.cshtml",
       "FileKind": "mvc"
@@ -20593,6 +20593,11 @@
     {
       "FilePath": "c:\\final\\test\\Views\\Teacher\\Index.cshtml",
       "TargetPath": "Views\\Teacher\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\final\\test\\Views\\Student\\StartTestPage.cshtml",
+      "TargetPath": "Views\\Student\\StartTestPage.cshtml",
       "FileKind": "mvc"
     },
     {
