@@ -80,10 +80,12 @@ namespace Project.Controllers
         List<Answer> answers = new List<Answer>();
         int QuestionAccount = data.Questions.Where(i => i.IdTest == test.TestId).Count();
         if (QuestionOrder < 0) QuestionOrder = 0;
-        if (QuestionOrder == QuestionAccount)
-        {   
-            List<AnsQuestion> studentAnswers = data.AnsQuestions.Where(i => i.IdStudent == StudentId).ToList();
-           
+        if (QuestionOrder == QuestionAccount) // когда ответили на последний вопрос теста
+        {  
+             return RedirectToAction("TestResults", new {
+                TestId = TestId,
+                StudentId = StudentId
+            });
         }
         Question currectQuestion = data.Questions.Where(i => i.IdTest == test.TestId)
                                                  .OrderBy(i => i.QuestionId).ToList()[QuestionOrder];
@@ -130,6 +132,42 @@ namespace Project.Controllers
             StudentId = StudentId,
             QuestionOrder = QuestionOrder
         });
+    }
+    public IActionResult TestResults(int TestId, int StudentId)
+    {
+        Test test = data.Tests.Find(TestId);
+        Student student = data.Students.Find(StudentId);
+        List<Question> questions = data.Questions.Where(i => i.IdTest == TestId).ToList();
+        List<QuestionWithAns> questionWithAnsList = new List<QuestionWithAns>();
+        List<Answer> answers = new List<Answer>();         
+            int PointSum = 0;
+            foreach(var item in questions)
+            {
+                answers = data.Answers.Where(i => i.IdQuestion == item.QuestionId)
+                                      .OrderBy(i=>i.IsRightAnswer).ToList();
+                AnsQuestion studAns =  data.AnsQuestions.FirstOrDefault(i => i.IdQuestion == item.QuestionId);
+                QuestionWithAns questionWithAnss= new QuestionWithAns{
+                    question = item,                    
+                    wrgAns1 = answers[0],
+                    wrgAns2 = answers[1],
+                    wrgAns3 = answers[2],
+                    corrAns = answers[3],
+                    studAnsId = studAns.IdAnswer,
+                    test = test
+                };
+                if (questionWithAnss.studAnsId == questionWithAnss.corrAns.AnswerId)
+                    PointSum = PointSum + questionWithAnss.question.Point;
+                questionWithAnsList.Add(questionWithAnss);
+            }
+            TakeTestHelper modell = new TakeTestHelper{
+                AllQuestionsWithAns = questionWithAnsList,
+                MaxPoint = data.Questions.Where(i => i.IdTest == test.TestId).Sum(i => i.Point),
+                ResultPoint = PointSum,
+                student = student,
+                test = test};
+           
+        return View(modell);
+        //return RedirectToAction("Error", new{error = PointSum.ToString() + " из " + modell.MaxPoint.ToString()});
     }
     public static List<int> randOrdr()
     {

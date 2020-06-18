@@ -12,7 +12,7 @@ namespace TestSystem.Models
         public Answer wrgAns1{get; set;}
         public Answer wrgAns2{get; set;}
         public Answer wrgAns3{get; set;}
-        public AnsQuestion studAns{get; set;}
+        public int studAnsId{get; set;}
         public Test test{get; set;}
 
     }

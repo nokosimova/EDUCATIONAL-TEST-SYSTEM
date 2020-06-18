@@ -28,6 +28,36 @@
                 </h4>
             </td>
             <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
+            <h4>Тест: @Model.test.TestName <br />
+                Студент: @Model.student.StudentFirstName @Model.student.StudentSecondName
+                Результаты: @Model.ResultPoint из @Model.MaxPoint баллов<br />
+            </h4>
+            <table border="1">
+                @{int pos = 0; int res = 0;}
+             <tr><td><form action="~/Student/TestList">
+                    <input type="hidden" name="StudentId" value="@Model.student.StudentId" /> 
+                    <input type="submit" value="Список тестов">
+                </form></td>
+            <tr><th>Номер</th><th>Вопрос/ответы</th><th>Результат</th></tr>
+            @foreach (var item in Model.AllQuestionsWithAns)
+            {                   
+                pos = pos + 1;
+                if (item.studAnsId == item.corrAns.AnswerId)
+                    res = item.question.Point;
+                <tr>
+                    <td>@pos</td>                    
+                    <td>
+                        @item.question.QuestionText<br style="color: green;"/>
+                        <br /> а) @item.corrAns.AnswerText
+                        <br /> б) @item.wrgAns1.AnswerText
+                        <br /> в) @item.wrgAns2.AnswerText
+                        <br /> г) @item.wrgAns3.AnswerText
+                    </td>
+                    <td style="color: indigo;"> @res баллов </td>
+                </tr>
+            }
+            </table>
+            
             </td>
         </tr>
        </tr>
