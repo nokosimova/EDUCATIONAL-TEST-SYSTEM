@@ -30,22 +30,34 @@
             <td style="background-color:#FFFFFF;height:800px;text-align:top;"> 
                 @{int qnum = Model.QuestionOrder + 1;}
                 @{int next = Model.QuestionOrder + 1, prev = Model.QuestionOrder - 1;}
-                <h3>Вопрос  @qnum из @Model.QuestionAmmount:</h3><br />
+                <h3>Вопрос  @qnum из @Model.QuestionAccount:</h3>
                 <table>
-                <td style="color: greenyellow;">Балл : @Model.QuestWithAns.question.Point </td>
-                <tr><td>****</td> </tr>
-                <tr><td><form action="~/Student/Question">
+                <td style="color: green;">Балл : @Model.QuestWithAns.question.Point </td>
+                <tr><td bgcolor="EAEAEA">@Model.QuestWithAns.question.QuestionText</td><br></tr>
+                <form method="POST">
+                <tr>
+                 <td>   
+                        <input type="radio" id="ans1" name="AnswerId" required value="@Model.QuestWithAns.corrAns.AnswerId">
+                        <label for="male">@Model.QuestWithAns.corrAns.AnswerText</label><br>
+                        <input type="radio" id="ans2" name="AnswerId" required value="@Model.QuestWithAns.wrgAns1.AnswerId">
+                        <label for="female">@Model.QuestWithAns.wrgAns1.AnswerText</label><br>
+                        <input type="radio" id="ans3" name="AnswerId" required value="@Model.QuestWithAns.wrgAns2.AnswerId">
+                        <label for="other">@Model.QuestWithAns.wrgAns2.AnswerText</label><br>
+                        <input type="radio" id="ans4" name="AnswerId" required value="@Model.QuestWithAns.wrgAns3.AnswerId">
+                        <label for="male">@Model.QuestWithAns.wrgAns3.AnswerText</label><br>
+                        <input type="hidden" name="StudentId" value="@Model.student.StudentId" />
+                        <input type="hidden" name="QuestionId" value="@Model.QuestWithAns.question.QuestionId" />    
+                        <input type="hidden" name="QuestionOrder" value="@next" />
+                        <input style="color: green;" type="submit" value="Дальше">
+                </td>
+                </form> 
+                <td><form action="~/Student/Question">
                     <input type="hidden" name="StudentId" value="@Model.student.StudentId" />
                     <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
                     <input type="hidden" name="QuestionOrder" value="@prev" />
                     <input type="submit" value="Назад">
                 </form></td>
-                <td><form action="~/Student/Question">
-                    <input type="hidden" name="StudentId" value="@Model.student.StudentId" />
-                    <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
-                    <input type="hidden" name="QuestionOrder" value="@next" />
-                    <input style="color: green;" type="submit" value="Дальше">
-                </form> </td></tr>
+                </tr>
                 <tr>
                     <td ><form action="~/Student/StartTestPage">
                     <input type="hidden" name="StudentId" value="@Model.student.StudentId" />

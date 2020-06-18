@@ -63,23 +63,34 @@ namespace Project.Controllers
         TakeTestHelper model = new TakeTestHelper{
             student = student,
             test = test,
-            QuestionAmmount = data.Questions.Where(i => i.IdTest == test.TestId).Count(),
+            QuestionAccount = data.Questions.Where(i => i.IdTest == test.TestId).Count(),
             ResultPoint = data.Questions.Where(i => i.IdTest == test.TestId).Sum(i => i.Point)
         };
         return View(model);
     }
     
     [HttpGet]
+
     public IActionResult Question(int? TestId, int? StudentId, int QuestionOrder)
     {
         Test test = data.Tests.Find(TestId);
         Student student = data.Students.Find(StudentId);
+        List<Question> questions = data.Questions.Where(i => i.IdTest == TestId).ToList();
+        List<QuestionWithAns> questionWithAnsList = new List<QuestionWithAns>();
+        List<Answer> answers = new List<Answer>();
+        int QuestionAccount = data.Questions.Where(i => i.IdTest == test.TestId).Count();
         if (QuestionOrder < 0) QuestionOrder = 0;
+        if (QuestionOrder == QuestionAccount)
+        {   
+          //  int PointSum = 0;
+            List<AnsQuestion> studentAnswers = data.AnsQuestions.Where(i => i.IdStudent == StudentId).ToList();
+           
+        }
         Question currectQuestion = data.Questions.Where(i => i.IdTest == test.TestId)
                                                  .OrderBy(i => i.QuestionId).ToList()[QuestionOrder];
         if (currectQuestion == null) 
             return RedirectToAction("Error", new{error = "Вопрос не найден!"});
-        List<Answer> answers = data.Answers.Where(i => i.IdQuestion == currectQuestion.QuestionId)
+        answers = data.Answers.Where(i => i.IdQuestion == currectQuestion.QuestionId)
                                       .OrderBy(i=>i.IsRightAnswer).ToList();
         List<int> ordr = randOrdr();
         QuestionWithAns questionWithAns= new QuestionWithAns{
@@ -89,23 +100,51 @@ namespace Project.Controllers
                     wrgAns3 = answers[ordr[2]],
                     corrAns = answers[ordr[3]],
                 };
-
         TakeTestHelper model = new TakeTestHelper{
             QuestWithAns = questionWithAns,
             student = student,
             test = test,
-            QuestionAmmount = data.Questions.Where(i => i.IdTest == test.TestId).Count(),
+            QuestionAccount = data.Questions.Where(i => i.IdTest == test.TestId).Count(),
             QuestionOrder = QuestionOrder
         };
         return View(model);
     }
+    [HttpPost]
+    public IActionResult Question(int AnswerId, int StudentId, int QuestionId, int QuestionOrder)
+    {
+        if (!ModelState.IsValid) return RedirectToAction("Error", new{error = "Ответ не дошел!"});
+        AnsQuestion studentAns = new AnsQuestion{
+            IdAnswer = AnswerId,
+            IdQuestion = QuestionId,
+            IdStudent = StudentId
+        };
+        AnsQuestion ans = data.AnsQuestions.FirstOrDefault(i =>
+                             i.IdStudent == StudentId && i.IdQuestion == QuestionId);
+        if (ans == null)
+            data.AnsQuestions.Add(studentAns);
+        else
+            data.AnsQuestions.Find(ans.AnsQuestionId).IdAnswer = AnswerId;
+        data.SaveChanges();
+        int TestId = data.Questions.Find(QuestionId).IdTest;
+        return RedirectToAction("Question", new{
+            TestId = TestId,
+            StudentId = StudentId,
+            QuestionOrder = QuestionOrder
+        });
+    }
     public static List<int> randOrdr()
     {
-        List<int> list = new List<int>();
-        Random rand = new Random();
-        for (int i = 0; i < 4; i++)
-            list.Add(rand.Next(0,3));
-        return list;
+        List<int> data = new List<int>{0,1,2,3};
+       Random random = new Random();
+	    for (int i = data.Count - 1; i >= 1; i--)
+        {
+   		    int j = random.Next(i + 1);
+   		    // обменять значения data[j] и data[i]
+   		    var temp = data[j];
+   		    data[j] = data[i];
+   		    data[i] = temp;
+	    }
+        return data;
     }
     public string Error(string error)
         {

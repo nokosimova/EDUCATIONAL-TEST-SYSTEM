@@ -10,7 +10,7 @@ namespace TestSystem.Models
         public Test test{get; set;}
         public Student student{get; set;}
         public int QuestionOrder{get; set;}
-        public int QuestionAmmount{get; set;}
+        public int QuestionAccount{get; set;}
         public int ResultPoint{get; set;}
     }
 }

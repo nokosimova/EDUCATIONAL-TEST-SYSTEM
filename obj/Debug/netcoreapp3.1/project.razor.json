@@ -20541,6 +20541,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\final\\test\\Views\\Student\\TestResults.cshtml",
+      "TargetPath": "Views\\Student\\TestResults.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\final\\test\\Views\\Teacher\\SuccesMessage.cshtml",
       "TargetPath": "Views\\Teacher\\SuccesMessage.cshtml",
       "FileKind": "mvc"

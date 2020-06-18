@@ -16,6 +16,7 @@ namespace TestSystem
 {
     public class Startup
     {
+        public List<int> ansIdList{get; set;}
 
         public Startup(IConfiguration configuration)
         {
