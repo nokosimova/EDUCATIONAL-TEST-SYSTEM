@@ -82,7 +82,6 @@ namespace Project.Controllers
         if (QuestionOrder < 0) QuestionOrder = 0;
         if (QuestionOrder == QuestionAccount)
         {   
-          //  int PointSum = 0;
             List<AnsQuestion> studentAnswers = data.AnsQuestions.Where(i => i.IdStudent == StudentId).ToList();
            
         }
