@@ -66,6 +66,11 @@ namespace Project.Controllers
             {
                 return RedirectToAction("Error", new{error = "Что-то пошло не так"});
             }
+            if (data.Subjects.Find(test.IdSubject) == null)
+            {
+                ModelState.AddModelError("IdSubject", "На данный момент предметов для создания тестов нет!");               
+                return RedirectToAction("CreateTest", new{TeacherId = test.IdTeacher});
+            }
             if (data.Tests.FirstOrDefault(i => i.TestName == test.TestName) != null)
             {
                 ModelState.AddModelError("TestName", "Тест с таким названием уже есть. Выберите другое!");               
@@ -90,7 +95,7 @@ namespace Project.Controllers
         //методы для просмотра тестов
         public IActionResult TestList(int TeacherId)
         {
-            if (TeacherId != 1) return RedirectToAction("Error", new{error = "NO ID"});
+            if (!ModelState.IsValid) return RedirectToAction("Error", new{error = "Что-то пошло не так"});
             Course allCourse = new Course{CourseId = 0, CourseName = "Все курсы"};
             Faculty allFaculty = new Faculty{FacultyId = 0, FacultyName = "Все факультеты"};
             List<Course> courses = data.Courses.ToList();
@@ -208,7 +213,7 @@ namespace Project.Controllers
                     corrAns = new Answer{AnswerText = CorrAns},
                     test = data.Tests.Find(TestId)
                 };
-                ModelState.AddModelError("Point", "Выберит балл от 1 до 5!!!");  
+                ModelState.AddModelError("Point", "Выберите балл от 1 до 5!!!");  
                 return View(model);
             }          
             Question question = new Question{
@@ -298,6 +303,35 @@ namespace Project.Controllers
             data.SaveChanges();
             return RedirectToAction("EditTest", new{TestId =  data.Questions.Find(QuestionId).IdTest });
         }
+        public IActionResult TestHistory(int TestId){
+            List<TestHistory> historyList = new List<TestHistory>();
+            Test test = data.Tests.Find(TestId);
+            Teacher teacher = data.Teachers.Find(test.IdTeacher);
+            List<AnsQuestion> ansList = data.AnsQuestions.ToList();//.Where(i => data.Questions.Find(i.IdQuestion).IdTest == TestId).ToList();
+            var groups = from i in ansList
+                         group i by i.IdStudent;
+            foreach(var item in groups)
+            {
+                int PointSum = 0;
+                Student student = data.Students.Find(item.Key);
+                foreach(var i in item)
+                {
+                    Question question = data.Questions.Find(i.IdQuestion);
+                    if (question.IdTest == TestId)
+                        if (data.Answers.Find(i.IdAnswer).IsRightAnswer == true)
+                            PointSum = PointSum + question.Point;
+                }
+                TestHistory hist = new TestHistory{
+                    test = test,
+                    student = student,
+                    result = PointSum
+                    };
+                    historyList.Add(hist);
+            }
+            historyList =  historyList.OrderBy(i => i.result).ToList();
+            return View(new History{teacher = teacher, historylist = historyList});
+        }
+        
         public string Error(string error)
         {
             return $"ERROR MESSAGE:{error} ";

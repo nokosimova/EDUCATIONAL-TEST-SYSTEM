@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace TestSystem.Models
 {
-    public class TestEditModel
-    {
-        public List<QuestionWithAns> qaList{get; set;}
+    public class TestHistory{   
         public Test test{get; set;}
-        public Question question{get; set;}
-        public Student student{get; set;}
-
+        public Student student {get; set;}
+        public int result{get; set;}    
     }
+
 }

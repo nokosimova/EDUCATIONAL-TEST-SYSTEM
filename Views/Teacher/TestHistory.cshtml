@@ -1,0 +1,60 @@
+@model History
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <table style="width: 1150px;border:0px;">
+        <tr>
+            <td colspan="2" style="background-color:#47C607;">
+                <h3 style="color: white;">Тесты</h3>
+            </td>
+        </tr>
+        <tr style="vertical-align: top;">
+            <td style="background-color:#CCFF83;width:180px;text-align:top;">
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Главная", actionName: "Index",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.teacher.TeacherId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 >
+                     @Html.ActionLink(linkText: "Создать тест", actionName: "CreateTest",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.teacher.TeacherId},
+                     htmlAttributes: null)
+                </h4>
+                <h4 class="nav-item">
+                    @Html.ActionLink(linkText: "Список тестов", actionName: "TestList",
+                     controllerName: "Teacher",routeValues: new {TeacherId = @Model.teacher.TeacherId},
+                     htmlAttributes: null)
+                </h4>
+                <h5 class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Выход из системы</a>
+                </h5>
+            </td>
+             <td style="color: black; background-color:#FFFFFF;height:800px;text-align:top;"> 
+               <h3> СПИСОК ТЕСТОВ:</h3>
+                <table border="1">
+            <tr><th>Фамилия Имя студента</th><th>результат</th></tr>
+            @foreach (var item in Model.historylist)
+            {                   
+                <tr>
+                    <td>@item.student.StudentFirstName @item.student.StudentSecondName</td>                    
+                    <td>@item.result</td>
+                </tr>
+            }
+            </table>            
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html> 

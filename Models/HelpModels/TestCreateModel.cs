@@ -12,6 +12,6 @@ namespace TestSystem.Models
         public IEnumerable<Test> Tests{get; set;}
         public Test test{get; set;}
         public Teacher teacher{get; set;}
-
+        public Student student{get; set;}
     }
 }
