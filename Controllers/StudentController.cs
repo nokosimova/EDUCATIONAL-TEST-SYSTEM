@@ -140,12 +140,13 @@ namespace Project.Controllers
         List<Question> questions = data.Questions.Where(i => i.IdTest == TestId).ToList();
         List<QuestionWithAns> questionWithAnsList = new List<QuestionWithAns>();
         List<Answer> answers = new List<Answer>();         
-            int PointSum = 0;
-            foreach(var item in questions)
+        int PointSum = 0;
+        foreach(var item in questions)
             {
                 answers = data.Answers.Where(i => i.IdQuestion == item.QuestionId)
                                       .OrderBy(i=>i.IsRightAnswer).ToList();
-                AnsQuestion studAns =  data.AnsQuestions.FirstOrDefault(i => i.IdQuestion == item.QuestionId);
+                AnsQuestion studAns =  data.AnsQuestions.FirstOrDefault(i => i.IdQuestion == item.QuestionId &&
+                                                                i.IdStudent == StudentId);
                 QuestionWithAns questionWithAnss= new QuestionWithAns{
                     question = item,                    
                     wrgAns1 = answers[0],
@@ -155,6 +156,7 @@ namespace Project.Controllers
                     studAnsId = studAns.IdAnswer,
                     test = test
                 };
+
                 if (questionWithAnss.studAnsId == questionWithAnss.corrAns.AnswerId)
                     PointSum = PointSum + questionWithAnss.question.Point;
                 questionWithAnsList.Add(questionWithAnss);

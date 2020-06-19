@@ -66,6 +66,11 @@ namespace Project.Controllers
             {
                 return RedirectToAction("Error", new{error = "Что-то пошло не так"});
             }
+            if (data.Subjects.Find(test.IdSubject) == null)
+            {
+                ModelState.AddModelError("IdSubject", "На данный момент предметов для создания тестов нет!");               
+                return RedirectToAction("CreateTest", new{TeacherId = test.IdTeacher});
+            }
             if (data.Tests.FirstOrDefault(i => i.TestName == test.TestName) != null)
             {
                 ModelState.AddModelError("TestName", "Тест с таким названием уже есть. Выберите другое!");               
@@ -208,7 +213,7 @@ namespace Project.Controllers
                     corrAns = new Answer{AnswerText = CorrAns},
                     test = data.Tests.Find(TestId)
                 };
-                ModelState.AddModelError("Point", "Выберит балл от 1 до 5!!!");  
+                ModelState.AddModelError("Point", "Выберите балл от 1 до 5!!!");  
                 return View(model);
             }          
             Question question = new Question{
@@ -302,12 +307,12 @@ namespace Project.Controllers
             List<TestHistory> historyList = new List<TestHistory>();
             Test test = data.Tests.Find(TestId);
             Teacher teacher = data.Teachers.Find(test.IdTeacher);
-            int PointSum = 0;
             List<AnsQuestion> ansList = data.AnsQuestions.ToList();//.Where(i => data.Questions.Find(i.IdQuestion).IdTest == TestId).ToList();
             var groups = from i in ansList
                          group i by i.IdStudent;
             foreach(var item in groups)
             {
+                int PointSum = 0;
                 Student student = data.Students.Find(item.Key);
                 foreach(var i in item)
                 {
