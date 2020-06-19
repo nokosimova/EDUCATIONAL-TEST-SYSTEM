@@ -45,12 +45,16 @@ namespace Project.Controllers
         public IActionResult TestList(int? StudentId, int? SubjectId)
         {
             Student student = data.Students.Find(StudentId);
+            Subject allSubject = new Subject{SubjectId = 0, SubjectName = "Все предметы"};
+            List<Subject> subjects = data.Subjects.Where(i => i.IdCourse == student.IdCourse
+                                                         && i.IdFaculty ==student.IdFaculty).ToList();
+            subjects.Insert(0, allSubject);
             if (student == null) return RedirectToAction("Error", new{error = "Что-то пошло не так"});
             CourseFacultySubject model = new CourseFacultySubject{
-                Subjects = data.Subjects.Where(i => i.IdCourse == student.IdCourse 
-                                               && i.IdFaculty == student.IdFaculty),
+                Subjects = subjects,
                 student = student,
-                Tests = data.Tests.Where(i => i.IdSubject == SubjectId)};
+                Tests = (SubjectId != 0)?data.Tests.Where(i => i.IdSubject == SubjectId):
+                                         data.Tests};
             return View(model);
         }
     // методы для прохождения студентом тестов
