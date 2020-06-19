@@ -42,6 +42,7 @@
             @foreach (var item in Model.AllQuestionsWithAns)
             {                   
                 pos = pos + 1;
+                res = 0;
                 if (item.studAnsId == item.corrAns.AnswerId)
                     res = item.question.Point;
                 <tr>

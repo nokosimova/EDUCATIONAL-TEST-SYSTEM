@@ -40,7 +40,7 @@ namespace TestSystem.Controllers
                 ModelState.AddModelError("login", "Заполните все поля для ввода");               
                 return View();
             }            
-            if (data.Admins.FirstOrDefault(i => (i.AdminLogin == login)) != null)
+            if (data.Admins.FirstOrDefault(i => (i.AdminLogin == login && i.AdminPassword == password)) != null)
             {
                 Admin admin = data.Admins.FirstOrDefault(i =>  (i.AdminLogin == login));
                 return RedirectToAction("Index","Admin",admin); 
