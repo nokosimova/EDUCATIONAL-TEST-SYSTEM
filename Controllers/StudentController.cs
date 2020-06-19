@@ -167,8 +167,8 @@ namespace Project.Controllers
                 test = test};
            
         return View(modell);
-        //return RedirectToAction("Error", new{error = PointSum.ToString() + " из " + modell.MaxPoint.ToString()});
-    }
+         //return RedirectToAction("Error", new{error = PointSum.ToString() + " из " + modell.MaxPoint.ToString()});
+   }
     public static List<int> randOrdr()
     {
         List<int> data = new List<int>{0,1,2,3};

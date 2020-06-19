@@ -263,3 +263,5 @@ C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\FinishTest.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\Question.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\StartTestPage.cshtml.g.cs
 C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\TestResults.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Student\TestHistory.cshtml.g.cs
+C:\final\test\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\TestHistory.cshtml.g.cs

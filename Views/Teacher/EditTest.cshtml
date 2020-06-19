@@ -61,6 +61,11 @@
                     <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
                     <input style="color: red;" type="submit" value="УДАЛИТЬ ТЕСТ">
                 </form> </td>
+                <td>                 
+                <form action="~/Teacher/TestHistory">
+                    <input type="hidden" name="TestId" value="@Model.test.TestId" /> 
+                    <input  type="submit" value="Резльтаты по тесту">
+                </form> </td>
             </tr>
             </table>
             <br />
